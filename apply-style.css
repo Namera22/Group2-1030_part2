@@ -382,3 +382,47 @@ html, body {
 footer p {
     margin: 0;
 }
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (max-width: 768px){
+    .page-wrap {
+        flex-direction: column;
+        margin: 0px auto 60px;
+    }
+
+    .page-wrap > :first-child {
+    /*says, do not grow, do not shrink, stay 280px*/
+    width: 100%;
+    position: static;
+    }
+
+    .form-grid.two-column {
+        grid-template-columns:  1fr;
+        gap: 15px;
+    }
+
+    .form-elements {
+        width: 100%;
+    }
+
+    input, select, textarea {
+        max-width: 100%;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .skills-list {
+        margin: 5px 0 !important; 
+        width: 100%;
+    }
+
+    .form-section {
+        padding: 1em !important;
+    }
+}
