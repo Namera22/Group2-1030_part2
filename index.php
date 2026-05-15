@@ -39,10 +39,10 @@
 
     <!-- MENU -->
     <ul class="navigation-bar">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="jobs.html">Jobs</a></li>
-      <li><a href="apply.html">Apply</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.php" class="active">Home</a></li>
+      <li><a href="jobs.php">Jobs</a></li>
+      <li><a href="apply.php">Apply</a></li>
+      <li><a href="about.php">About</a></li>
     </ul>
 
   </div>
