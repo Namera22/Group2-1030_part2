@@ -13,18 +13,18 @@
 </head>
 
 <body>
-<nav class="navbar">
+    <nav class="navbar">
 
-  <div class="nav-container">
+        <div class="nav-container">
 
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-      <div class="logo-text">
-        <strong>SmartCity</strong>
-        <span>Infrastructure Consultancy</span>
-      </div>
-    </div>
+            <!-- LOGO -->
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+                <div class="logo-text">
+                    <strong>SmartCity</strong>
+                    <span>Infrastructure Consultancy</span>
+                </div>
+            </div>
 
     <!-- MENU -->
     <ul class="navigation-bar">
@@ -34,9 +34,9 @@
       <li><a href="about.php">About</a></li>
     </ul>
 
-  </div>
+        </div>
 
-</nav>
+    </nav>
     <!-- Page wrapper -->
     <div id="page-wrapper">
 
@@ -47,10 +47,10 @@
         </header>
 
         <!-- main content -->
-        <main>
+        <main role="main" aria-label="Job listings">
 
             <!-- Aside: Quick info panel - floated right, 25% width -->
-            <aside>
+            <aside aria-label="Quick information and job navigation">
                 <h2>Quick Info</h2>
 
                 <h3>Open Positions</h3>
@@ -69,7 +69,7 @@
                 <p><a href="mailto:info@urbansyncconsultancy.com">info@urbansyncconsultancy.com</a></p>
 
                 <h3>Jump To Position</h3>
-                <ul>
+                <ul aria-label="Jump to job position">
                     <li><a href="#ST001">ST001 – Smart Transport Systems Engineer</a></li>
                     <li><a href="#UD002">UD002 – Urban Data Analyst</a></li>
                     <li><a href="#CP003">CP003 – Smart City Project Manager</a></li>
@@ -122,7 +122,7 @@
                     <li>Knowledge of SCATS or SCOOT traffic signal control systems.</li>
                     <li>Postgraduate qualification in Smart Cities, Urban Engineering, or similar.</li>
                 </ul>
-                <a href="../apply.html" class="apply-btn">
+                <a href="../apply.html" class="apply-btn" aria-label="Apply for Smart Transport Systems Engineer ST001">
                     Apply Now <span class="icon">↗</span>
                 </a>
             </section>
@@ -170,7 +170,7 @@
                     <li>Knowledge of open government data standards and public sector reporting.</li>
                     <li>Postgraduate qualification in Data Analytics, Urban Informatics, or similar.</li>
                 </ul>
-                <a href="../apply.html" class="apply-btn">
+                <a href="../apply.html" class="apply-btn" aria-label="Apply for Smart Transport Systems Engineer ST001">
                     Apply Now <span class="icon">↗</span>
                 </a>
             </section>
@@ -219,9 +219,9 @@
                     <li>Experience managing projects with budgets exceeding $1 million.</li>
                     <li>Postgraduate qualification in Urban Planning, Smart Cities, or related discipline.</li>
                 </ul>
-            <a href="../apply.html" class="apply-btn">
-                Apply Now <span class="icon">↗</span>
-            </a>
+                <a href="../apply.html" class="apply-btn" aria-label="Apply for Smart Transport Systems Engineer ST001">
+                    Apply Now <span class="icon">↗</span>
+                </a>
 
             </section>
 
@@ -269,7 +269,7 @@
                     <li>Knowledge of Australian telecommunications standards and spectrum regulations.</li>
                     <li>Relevant certifications in IoT, networking, or cybersecurity (e.g. CCNA, CompTIA).</li>
                 </ul>
-                <a href="../apply.html" class="apply-btn">
+                <a href="../apply.html" class="apply-btn" aria-label="Apply for Smart Transport Systems Engineer ST001">
                     Apply Now <span class="icon">↗</span>
                 </a>
             </section>
@@ -324,9 +324,9 @@
                         communities.</li>
                     <li>Proficiency in a second language relevant to Melbourne's diverse communities.</li>
                 </ul>
-            <a href="../apply.html" class="apply-btn">
-                Apply Now <span class="icon">↗</span>
-            </a>
+                <a href="../apply.html" class="apply-btn" aria-label="Apply for Smart Transport Systems Engineer ST001">
+                    Apply Now <span class="icon">↗</span>
+                </a>
             </section>
 
         </main>
@@ -334,7 +334,9 @@
     </div><!-- end #page-wrapper -->
 
     <footer>
-        <p><a href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira Project Link</a></p>
+        <p><a
+                href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira
+                Project Link</a></p>
         <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
         <p><a href="mailto:info@smartcity.com">Email Us</a></p>
         <p><a href="https://namera22.github.io/Group2-1030/">Live Site</a></p>
