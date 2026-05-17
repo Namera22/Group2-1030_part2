@@ -195,27 +195,6 @@ section ol {
   margin-bottom: 0.3em;
 }
 
-/* responsive media queries */
-@media screen and (max-width: 768px) {
-  aside {
-    float: none;
-    width: 100%;
-    margin: 0 0 1.5em 0;
-  }
-
-  #page-wrapper {
-    padding: 0 1em;
-  }
-
-  h1 {
-    font-size: 1.6em;
-  }
-
-  h2 {
-    font-size: 1.3em;
-  }
-}
-
 /* apply now button */
 .apply-btn {
   display: inline-block;
