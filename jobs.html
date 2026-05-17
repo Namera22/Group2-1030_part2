@@ -62,7 +62,7 @@
                 <p><strong>Application Deadline:</strong> 30 May 2026</p>
 
                 <h3>How to Apply</h3>
-                <p>Ready to join us? Head to our <a href="../application-page/apply.html">Apply page</a> and
+                <p>Ready to join us? Head to our <a href="../apply.html">Apply page</a> and
                     submit your application with the relevant job reference number.</p>
 
                 <h3>Contact Us</h3>
@@ -122,6 +122,9 @@
                     <li>Knowledge of SCATS or SCOOT traffic signal control systems.</li>
                     <li>Postgraduate qualification in Smart Cities, Urban Engineering, or similar.</li>
                 </ul>
+                <a href="../apply.html" class="apply-btn">
+                    Apply Now <span class="icon">↗</span>
+                </a>
             </section>
 
             <!-- JOB 2: UD002 -->
@@ -167,7 +170,7 @@
                     <li>Knowledge of open government data standards and public sector reporting.</li>
                     <li>Postgraduate qualification in Data Analytics, Urban Informatics, or similar.</li>
                 </ul>
-                <a href="../application-page/apply.html" class="apply-btn">
+                <a href="../apply.html" class="apply-btn">
                     Apply Now <span class="icon">↗</span>
                 </a>
             </section>
@@ -216,7 +219,7 @@
                     <li>Experience managing projects with budgets exceeding $1 million.</li>
                     <li>Postgraduate qualification in Urban Planning, Smart Cities, or related discipline.</li>
                 </ul>
-            <a href="../application-page/apply.html" class="apply-btn">
+            <a href="../apply.html" class="apply-btn">
                 Apply Now <span class="icon">↗</span>
             </a>
 
@@ -266,7 +269,7 @@
                     <li>Knowledge of Australian telecommunications standards and spectrum regulations.</li>
                     <li>Relevant certifications in IoT, networking, or cybersecurity (e.g. CCNA, CompTIA).</li>
                 </ul>
-                <a href="../application-page/apply.html" class="apply-btn">
+                <a href="../apply.html" class="apply-btn">
                     Apply Now <span class="icon">↗</span>
                 </a>
             </section>
@@ -321,7 +324,7 @@
                         communities.</li>
                     <li>Proficiency in a second language relevant to Melbourne's diverse communities.</li>
                 </ul>
-            <a href="../application-page/apply.html" class="apply-btn">
+            <a href="../apply.html" class="apply-btn">
                 Apply Now <span class="icon">↗</span>
             </a>
             </section>

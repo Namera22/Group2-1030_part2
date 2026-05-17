@@ -250,3 +250,32 @@ footer a {
     color: #f1c40f;
     text-decoration: none;
 }
+/* responsive media queries */
+@media screen and (max-width: 768px) {
+
+    aside {
+        position: static;
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5em 0;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    section {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #page-wrapper {
+        padding: 0 1em;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+}
