@@ -43,11 +43,19 @@ $result = mysqli_query($conn, $query);
             </div>
 
             <!-- MENU -->
-            <ul class="navigation-bar" aria-label="Main navigation" <li><a href="index.php">Home</a></li>
+            <<<<<<< HEAD <ul class="navigation-bar" aria-label="Main navigation" <li><a href="index.php">Home</a></li>
                 <li><a href="jobs.php" class="active" aria-current="page">Jobs</a></li>
                 <li><a href="apply.php">Apply</a></li>
                 <li><a href="about.php">About</a></li>
-            </ul>
+                =======
+                <!-- TODO: change to appropriate links -->
+                <ul class="navigation-bar" aria-label="Main navigation">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.php" class="active" aria-current="page">Jobs</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="about.html">About</a></li>
+                    >>>>>>> b45ca4f (feat: implement user login and management functionality)
+                </ul>
 
         </div>
 
@@ -91,20 +99,24 @@ $result = mysqli_query($conn, $query);
                 <p><strong>Application Deadline:</strong> 30 May 2026</p>
 
                 <h3>How to Apply</h3>
-                <p>Ready to join us? Head to our <a href="apply.php">Apply page</a> and
-                    submit your application with the relevant job reference number.</p>
+                <<<<<<< HEAD <p>Ready to join us? Head to our <a href="apply.php">Apply page</a> and
+                    =======
+                    <!-- TODO: change to appropriate links -->
+                    <p>Ready to join us? Head to our <a href="../apply.html">Apply page</a> and
+                        >>>>>>> b45ca4f (feat: implement user login and management functionality)
+                        submit your application with the relevant job reference number.</p>
 
-                <h3>Contact Us</h3>
-                <p><a href="mailto:info@urbansyncconsultancy.com">info@urbansyncconsultancy.com</a></p>
+                    <h3>Contact Us</h3>
+                    <p><a href="mailto:info@urbansyncconsultancy.com">info@urbansyncconsultancy.com</a></p>
 
-                <h3>Jump To Position</h3>
-                <ul aria-label="Jump to job position">
-                    <li><a href="#ST001">ST001 – Smart Transport Systems Engineer</a></li>
-                    <li><a href="#UD002">UD002 – Urban Data Analyst</a></li>
-                    <li><a href="#CP003">CP003 – Smart City Project Manager</a></li>
-                    <li><a href="#CE004">CE004 – IoT &amp; Connected Infrastructure Specialist</a></li>
-                    <li><a href="#CS005">CS005 – Community &amp; Stakeholder Engagement Officer</a></li>
-                </ul>
+                    <h3>Jump To Position</h3>
+                    <ul aria-label="Jump to job position">
+                        <li><a href="#ST001">ST001 – Smart Transport Systems Engineer</a></li>
+                        <li><a href="#UD002">UD002 – Urban Data Analyst</a></li>
+                        <li><a href="#CP003">CP003 – Smart City Project Manager</a></li>
+                        <li><a href="#CE004">CE004 – IoT &amp; Connected Infrastructure Specialist</a></li>
+                        <li><a href="#CS005">CS005 – Community &amp; Stakeholder Engagement Officer</a></li>
+                    </ul>
             </aside>
 
             <!-- AI acknowledgement: All job content (descriptions, responsibilities, requirements, and details) generated using GenAI tools -->
