@@ -4,6 +4,15 @@ $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+$search = "";
+if (isset($_GET['search']) && $_GET['search'] !== "") {
+    $search = mysqli_real_escape_string($conn, trim($_GET['search']));
+    $query = "SELECT * FROM jobs WHERE title LIKE '%$search%' OR ref_number LIKE '%$search%'";
+} else {
+    $query = "SELECT * FROM jobs";
+}
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +74,20 @@ if (!$conn) {
             <h1>Current Job Openings</h1>
             <p>Explore opportunities to help shape the cities of tomorrow.</p>
         </header>
+
+        <!-- Search bar -->
+        <form method="GET" action="jobs.php" style="text-align: center; margin: 1.5em 0;">
+            <input type="text" name="search" placeholder="Search by job title or reference number..."
+                value="<?php echo htmlspecialchars($search); ?>"
+                style="padding: 0.6em 1em; width: 50%; border: 2px solid #0a3d62; border-radius: 10px; font-size: 1em;">
+            <button type="submit"
+                style="padding: 0.6em 1.2em; background-color: #0a3d62; color: white; border: none; border-radius: 10px; font-size: 1em; cursor: pointer; margin-left: 0.5em;">
+                Search
+            </button>
+            <?php if ($search !== ""): ?>
+                <a href="jobs.php" style="margin-left: 1em; color: #0a3d62; font-size: 0.95em;">Clear</a>
+            <?php endif; ?>
+        </form>
 
         <!-- main content -->
         <main role="main" aria-label="Job listings">
