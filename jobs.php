@@ -26,22 +26,12 @@
                 </div>
             </div>
 
-            <<<<<<< HEAD <!-- MENU -->
-                <ul class="navigation-bar">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="jobs.php" class="active">Jobs</a></li>
-                    <li><a href="apply.php">Apply</a></li>
-                    <li><a href="about.php">About</a></li>
-                </ul>
-                =======
-                <!-- MENU -->
-                <ul class="navigation-bar" aria-label="Main navigation">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="jobs.html" class="active" aria-current="page">Jobs</a></li>
-                    <li><a href="apply.html">Apply</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-                >>>>>>> b615943 (feat: create jobs.php for job listings and application details)
+            <ul class="navigation-bar">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="jobs.php" class="active" aria-current="page">Jobs</a></li>
+                <li><a href="apply.php">Apply</a></li>
+                <li><a href="about.php">About</a></li>
+            </ul>
 
         </div>
 
