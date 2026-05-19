@@ -35,6 +35,14 @@
       <li><a href="apply.php"class="active">Apply</a></li>
       <li><a href="about.php">About</a></li>
     </ul>
+        <!-- SEARCH BAR -->
+<form class="nav-search">
+
+  <input type="text" id="search" placeholder="Search...">
+
+  <button type="submit">Search</button>
+
+</form>
 
   </div>
 

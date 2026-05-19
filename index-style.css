@@ -25,16 +25,18 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-
   background: rgba(10, 61, 98, 0.95);
+  padding: 10px 0;
 }
 
-/* CENTER EVERYTHING */
+/* NAV CONTAINER */
 .nav-container {
   display: flex;
-  flex-direction: column; /* STACK logo + menu */
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
 }
 
 /* LOGO */
@@ -66,19 +68,64 @@ body {
 .navigation-bar {
   list-style: none;
   display: flex;
-  gap: 30px;
-  margin-top: 25px;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 .navigation-bar a {
   color: white;
   text-decoration: none;
-  padding: 8px 10px;
+  padding: 10px 14px;
   border-radius: 6px;
+  font-weight: bold;
 }
 
 .navigation-bar a:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* ACTIVE PAGE */
+.navigation-bar .active {
+  background: #f1c40f;
+  color: black;
+}
+
+/* SEARCH BAR */
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+  flex-shrink: 1;
+  min-width: 0;
+
+}
+
+.nav-search input {
+  border: none;
+  padding: 10px 12px;
+  width: 140px;
+  min-width: 60px;
+  font-size: 14px;
+  outline: none;
+}
+
+.nav-search button {
+  border: none;
+  background: #3498db;
+  color: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-search button:hover {
+  background: #2980b9;
 }
 
 /* ACTIVE */
@@ -122,10 +169,7 @@ th, td {
   padding: 10px;
 }
 
-/* styling the search bar*/
-form {
-  text-align: center;
-}
+
 
 /* styling the acknowledgement section */
 .acknowledgement {
@@ -146,4 +190,66 @@ footer {
 footer a {
     color: #f1c40f;
     text-decoration: none;
+}
+
+/* ACCESSIBILITY */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: yellow;
+  color: black;
+  padding: 10px;
+  z-index: 1001;
+}
+
+a:focus,
+button:focus,
+input:focus {
+  outline: 3px solid #f1c40f;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 786px) {
+
+  .nav-container {
+    gap: 15px;
+  }
+
+  .navigation-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-search input {
+  width: 90px;
+}
+
+.nav-search button {
+  padding: 10px;
+  font-size: 13px;
+}
+  .logo-text strong {
+    font-size: 22px;
+  }
+
+  .logo-text span {
+    font-size: 11px;
+  }
+  .hero {
+    height: auto;
+  }
+
+  .overlay {
+    padding: 180px 20px 100px;
+  }
+
+  table {
+    width: 90%;
+  }
 }

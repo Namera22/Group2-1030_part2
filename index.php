@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="description" content="G02-Smart City Infrastructure Consultancy website offering smart transport, energy, and digital solutions.">
+  <meta name="keywords" content="smart city, infrastructure consultancy, sustainable cities, urban technology, smart transport, digital infrastructure">
   <meta name="author" content="Shushmita Barua">
 
   <title>SmartCity Infrastructure Consultancy</title>
@@ -20,6 +20,9 @@
 </head>
 <body>
   
+<a class="skip-link" href="#maincontent">
+  Skip to main content
+</a>
 
 <!-- Header -->
 <header>
@@ -31,6 +34,7 @@
     <!-- LOGO -->
     <div class="logo">
       <img src="images/logo.png" alt="SmartCity Infrastructure Consultancy logo">
+
       <div class="logo-text">
         <strong>SmartCity</strong>
         <span>Infrastructure Consultancy</span>
@@ -38,12 +42,21 @@
     </div>
 
     <!-- MENU -->
-    <ul class="navigation-bar">
+    <ul class="navigation-bar" aria-label="Main navigation">
       <li><a href="index.php" class="active">Home</a></li>
       <li><a href="jobs.php">Jobs</a></li>
       <li><a href="apply.php">Apply</a></li>
       <li><a href="about.php">About</a></li>
     </ul>
+
+    <!-- SEARCH BAR -->
+<form class="nav-search">
+
+ <input type="text" id="search" placeholder="Search..." aria-label="Search website">
+
+  <button type="submit" aria-label="Submit search">Search</button>
+
+</form>
 
   </div>
 
@@ -53,14 +66,14 @@
 
 
 <!-- main-->
-<main>
+<main id="maincontent">
 
   <!--hero section-->
   <section class="hero">
     <div class="overlay">
       <h1 style="color: #f3f5f7; font-size: 32px;">Building Intelligent Urban Futures</h1> <!-- Inline CSS -->
       <p>Smart transport and digital solutions.</p>
-      <a href="../jobs-page/jobs.html" class="btn">Explore Careers</a>
+      <a href="jobs.php" class="btn" aria-label="Explore available careers">Explore Careers</a>
     </div>
   </section>
 
@@ -89,15 +102,6 @@
   </tbody>
 </table>
   </section>
-
-  <!--search bar-->
-  <div class="search-bar">
-<form>
-  <label for="search">Search</label>
-  <input type="text" id="search" placeholder="Search...">
-  <button type="submit">Search</button>
-</form>
-  </div>
 
 
   <!-- acknowledgement of the country-->
