@@ -7,6 +7,12 @@ if (!isset($_SESSION['logged_in'])) {
     exit();
 }
 
+// EOI management is only available to administrators.
+if (($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: index.php");
+    exit();
+}
+
 $pageTitle = "HR Manager | Smart City Infrastructure Consultancy";
 $pageDescription = "HR manager dashboard for Smart City Infrastructure Consultancy.";
 $pageKeywords = "HR manager, dashboard, Smart City Infrastructure Consultancy";

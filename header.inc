@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +12,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="SmartCity Infrastructure Consultancy website">
-  <meta name="keywords" content="smart city, infrastructure, consultancy">
-  <meta name="author" content="Group 2">
+  <meta name="description" content="<?php echo htmlspecialchars($pageDescription ?? 'SmartCity Infrastructure Consultancy website'); ?>">
+  <meta name="keywords" content="<?php echo htmlspecialchars($pageKeywords ?? 'smart city, infrastructure, consultancy'); ?>">
+  <meta name="author" content="<?php echo htmlspecialchars($pageAuthor ?? 'Group 2'); ?>">
 
-  <title>SmartCity Infrastructure Consultancy</title>
+  <title><?php echo htmlspecialchars($pageTitle ?? 'SmartCity Infrastructure Consultancy'); ?></title>
 
   <!-- global STYLES -->
-  <link rel="stylesheet" href="global-style.css">
+  <link rel="stylesheet" href="global-style.css?v=20260522-footer">
 
   <!-- PAGE-SPECIFIC STYLES -->
 
@@ -22,7 +28,7 @@
     $currentPage = basename($_SERVER['PHP_SELF']);
 
     if ($currentPage == "index.php") {
-        echo '<link rel="stylesheet" href="index-style.css">';
+        echo '<link rel="stylesheet" href="index-style.css?v=20260522-hero-type">';
     }
 
     elseif ($currentPage == "jobs.php") {
@@ -30,7 +36,7 @@
     }
 
     elseif ($currentPage == "apply.php") {
-        echo '<link rel="stylesheet" href="apply-style.css">';
+        echo '<link rel="stylesheet" href="apply-style.css?v=20260522-hero-fix">';
     }
 
     elseif ($currentPage == "about.php") {

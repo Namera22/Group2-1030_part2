@@ -1,6 +1,6 @@
 /*
 
-filename: common-style.css
+filename: global-style.css
 
 author: Shushmita Barua
 
@@ -22,6 +22,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAVBAR */
@@ -40,11 +43,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
-  box-sizing: border-box;
-  width: 100%;
 }
 
 /* LOGO */
@@ -104,13 +107,12 @@ body {
 .nav-search {
   display: flex;
   align-items: center;
+  flex: 0 0 236px;
+  width: 236px;
   background: white;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  flex: 0 0 236px;
-  width: 236px;
-
 }
 
 .nav-search input {
@@ -145,8 +147,42 @@ body {
   background: #2980b9;
 }
 
+/* ACCOUNT STATUS */
+.nav-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(4, 24, 39, 0.32);
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav-account strong {
+  color: #f1c40f;
+  font-size: 14px;
+}
+
+.nav-account a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-account a:hover {
+  color: #f1c40f;
+}
+
 /* FOOTER */
 footer {
+  margin-top: auto;
   background: #0e3e60;
   color: white;
   text-align: center;
@@ -193,6 +229,7 @@ input:focus {
 @media screen and (max-width: 786px) {
 
   .nav-container {
+    flex-wrap: wrap;
     gap: 15px;
   }
 
@@ -206,14 +243,18 @@ input:focus {
     width: 90px;
   }
 
+  .nav-search {
+    flex-basis: 162px;
+    width: 162px;
+  }
+
   .nav-search button {
     padding: 10px;
     font-size: 13px;
   }
 
-  .nav-search {
-    flex-basis: 162px;
-    width: 162px;
+  .nav-account {
+    min-height: 34px;
   }
 
   .logo-text strong {

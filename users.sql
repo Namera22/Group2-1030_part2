@@ -18,47 +18,52 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `smartcity_db`
+-- Database: smartcity_db
 --
+
+CREATE DATABASE IF NOT EXISTS smartcity_db;
+USE smartcity_db;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table users
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+CREATE TABLE users (
+  user_id int(11) NOT NULL,
+  username varchar(50) NOT NULL,
+  password varchar(255) NOT NULL,
+  role enum('user','admin') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table users
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$0PmHpvaqgX6uUddBkNDhbOdm5vk1wI2Tj9R7yX2M2zVk/sZT5QXgq');
+INSERT INTO users (user_id, username, password, role) VALUES
+(1, 'admin', '$2y$10$0PmHpvaqgX6uUddBkNDhbOdm5vk1wI2Tj9R7yX2M2zVk/sZT5QXgq', 'admin');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table users
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE users
+  ADD PRIMARY KEY (user_id),
+  ADD UNIQUE KEY username (username);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table users
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE users
+  MODIFY user_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,10 +1,16 @@
 <?php
 session_start();
 
-// If already logged in, redirect straight to manage.php
-if (isset($_SESSION['logged_in'])) {
-    header("Location: manage.php");
+// If already logged in as an administrator, redirect straight to the website.
+if (isset($_SESSION['logged_in']) && ($_SESSION['role'] ?? '') === 'admin') {
+    header("Location: index.php");
     exit();
+}
+
+if (isset($_SESSION['logged_in'])) {
+    session_unset();
+    session_destroy();
+    session_start();
 }
 
 include 'settings.php';
@@ -14,23 +20,28 @@ $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($conn, $username) . "'");
-    $user = mysqli_fetch_assoc($result);
+    $statement = mysqli_prepare($conn, "SELECT username, password, role FROM users WHERE username = ?");
+    mysqli_stmt_bind_param($statement, "s", $username);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $account = mysqli_fetch_assoc($result);
 
-    if ($user && password_verify($_POST['password'], $user['password'])) {
+    if ($account && $account['role'] === 'admin' && password_verify($_POST['password'], $account['password'])) {
+        session_regenerate_id(true);
         $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: manage.php");
+        $_SESSION['username'] = $account['username'];
+        $_SESSION['role'] = $account['role'];
+        header("Location: index.php");
         exit();
     } else {
         $error = "Invalid username or password.";
     }
 }
 
-$pageTitle = "HR Login | Smart City Infrastructure Consultancy";
-$pageDescription = "HR manager login for Smart City Infrastructure Consultancy.";
-$pageKeywords = "HR login, Smart City Infrastructure Consultancy, manager access";
-$pageAuthor = "Group 2";
+$pageTitle = "Admin Login | Smart City Infrastructure Consultancy";
+$pageDescription = "Administrator login for Smart City Infrastructure Consultancy.";
+$pageKeywords = "admin login, administrator access, Smart City Infrastructure Consultancy";
+$pageAuthor = "Namera Nayat";
 ?>
 
 <?php include 'header.inc'; ?>
@@ -96,7 +107,7 @@ $pageAuthor = "Group 2";
     </style>
 
     <main id="maincontent" class="login-wrapper">
-        <h1>HR Manager Login</h1>
+        <h1>Admin Login</h1>
         <?php if ($error): ?>
             <p class="error">
                 <?php echo htmlspecialchars($error); ?>
