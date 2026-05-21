@@ -1,3 +1,11 @@
+<?php
+$pageTitle = "Smart City Infrastructure Consultancy";
+$pageDescription = "G02-Home page for Smart City Infrastructure Consultancy.";
+$pageKeywords = "smart city, infrastructure, consultancy, smart transport, digital solutions";
+$pageAuthor = "Shushmita Barua";
+$pageStyles = ["global-style.css", "index-style.css"];
+?>
+
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
 
@@ -9,9 +17,9 @@
 
     <div class="overlay">
 
-      <h1 style="color: #f3f5f7; font-size: 32px;">
+      <h1>
         Building Intelligent Urban Futures
-      </h1> <!-- Inline CSS -->
+      </h1>
 
       <p>Smart transport and digital solutions.</p>
 
@@ -28,39 +36,41 @@
   </section>
 
   <!--table-->
-  <section>
+  <section class="services-section">
 
-    <h2>Our Services</h2>
+    <div class="services-inner">
+      <h2>Our Services</h2>
 
-    <table>
+      <table class="services-table">
 
-      <thead>
+        <thead>
 
-        <tr>
-          <th colspan="2" scope="col">Services</th>
-        </tr>
+          <tr>
+            <th colspan="2" scope="col">Services</th>
+          </tr>
 
-      </thead>
+        </thead>
 
-      <tbody>
+        <tbody>
 
-        <tr>
-          <td>Transport</td>
-          <td>Smart Traffic</td>
-        </tr>
+          <tr>
+            <td class="service-category">Transport</td>
+            <td>Smart Traffic</td>
+          </tr>
 
-        <tr>
-          <td rowspan="2">Energy</td>
-          <td>Solar</td>
-        </tr>
+          <tr>
+            <td class="service-category" rowspan="2">Energy</td>
+            <td>Solar</td>
+          </tr>
 
-        <tr>
-          <td>Battery</td>
-        </tr>
+          <tr>
+            <td>Battery</td>
+          </tr>
 
-      </tbody>
+        </tbody>
 
-    </table>
+      </table>
+    </div>
 
   </section>
 

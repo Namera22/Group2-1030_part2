@@ -26,16 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Invalid username or password.";
     }
 }
+
+$pageTitle = "HR Login | Smart City Infrastructure Consultancy";
+$pageDescription = "HR manager login for Smart City Infrastructure Consultancy.";
+$pageKeywords = "HR login, Smart City Infrastructure Consultancy, manager access";
+$pageAuthor = "Group 2";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Login | Smart City Infrastructure Consultancy</title>
-    <link rel="stylesheet" href="index-style.css">
     <style>
         .login-wrapper {
             max-width: 400px;
@@ -94,29 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 0.95em;
         }
     </style>
-</head>
 
-<body>
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
-                <div class="logo-text">
-                    <strong>SmartCity</strong>
-                    <span>Infrastructure Consultancy</span>
-                </div>
-            </div>
-            <ul class="navigation-bar" aria-label="Main navigation">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="jobs.php">Jobs</a></li>
-                <li><a href="apply.html">Apply</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="login-wrapper">
+    <main id="maincontent" class="login-wrapper">
         <h1>HR Manager Login</h1>
         <?php if ($error): ?>
             <p class="error">
@@ -130,15 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" id="password" required>
             <button type="submit" class="login-btn">Login</button>
         </form>
-    </div>
+    </main>
 
-    <footer>
-        <p><a href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary">Jira
-                Project Link</a></p>
-        <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
-        <p><a href="mailto:info@smartcity.com">Email Us</a></p>
-    </footer>
-
-</body>
-
-</html>
+    <?php include 'footer.inc'; ?>
