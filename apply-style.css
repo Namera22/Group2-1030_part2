@@ -78,11 +78,6 @@ label {
    HEADER / HERO
 ========================= */
 
-header {
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-}
 
 /*size of the hero div*/
 header.hero {
@@ -363,25 +358,6 @@ html, body {
     overflow: visible;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-.footer-elements a {
-    font-family: Arial, sans-serif;
-    padding: 20px 0;
-    display: block;
-    color: #f4c400;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.2;
-}
-
-footer p {
-    margin: 0;
-}
 
 /* =========================
    ACCESSIBILITY

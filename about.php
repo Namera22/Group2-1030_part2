@@ -1,53 +1,12 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset = "utf-8">
-    <meta name = "description" content = "G02-About page for web technology project">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="John Fitzpatrick">
-    <meta name="keywords" content="Swinburne, metadata, web development">
-    <link  rel="stylesheet" href="about-style.css">
-    <link rel="stylesheet" href="index-style.css">
-    <title>About us</title><!--meta data-->
-</head>
+<?php
+$pageTitle = "About Us - SmartCity Infrastructure Consultancy";
+$pageDescription = "About the SmartCity Infrastructure Consultancy team members and contributions.";
+$pageKeywords = "about us, team members, contributions, SmartCity";
+$pageAuthor = "John Fitzpatrick";
+?>
 
-<body>
-
-<nav class="navbar">
-
-  <div class="nav-container">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-      <div class="logo-text">
-        <strong>SmartCity</strong>
-        <span>Infrastructure Consultancy</span>
-      </div>
-    </div>
-
-    <!-- MENU -->
-    <ul class="navigation-bar">
-      <li><a href="index.php" >Home</a></li>
-      <li><a href="jobs.php">Jobs</a></li>
-      <li><a href="apply.php">Apply</a></li>
-      <li><a href="about.php"class="active">About</a></li>
-    </ul>
-    <!-- SEARCH BAR -->
-<form class="nav-search">
-
-  <input type="text" id="search" placeholder="Search...">
-
-  <button type="submit">Search</button>
-
-</form>
-
-  </div>
-
-</nav>
-<h1 style="color:#0A3D62;"><strong>About us!</strong></h1>
-    <!--inline CSS ^--> 
-
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
 
 
 <style>
@@ -56,12 +15,19 @@
     background: #ffffff;
     line-height: 1.5;
     margin: 0;
-    padding: 1.5em;
+    padding: 0;
     overflow-y: auto;
 }
 </style>
 
+<main id="maincontent">
+
+<h1 style="color:#0A3D62;"><strong>About us!</strong></h1>
+    <!--inline CSS ^--> 
+
+
 <h2 id="parent_nestidlist">Class Information</h2><!--seperated from section so i can use hover functions-->
+
 <section id="nestedlist">
 
 <ul><!--nested list for class time and day-->
@@ -136,16 +102,6 @@
 </section>
 <!--image to take up whole bottom of screen-->
 
+</main>
 
-</body>
-<!--page footer-->
-<footer>
-  <p><a href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira Project Link</a></p>
-  <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
-  <p><a href="mailto:info@smartcity.com">Email Us</a></p>
-  <p><a href="https://namera22.github.io/Group2-1030/">Live Site</a></p>
-</footer>
-
-
-
-</html>
+<?php include 'footer.inc'; ?>

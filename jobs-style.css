@@ -217,18 +217,7 @@ section ol {
   border-radius: 10px;
 }
 
-/* styling the footer */
-footer {
-  background: #0e3e60;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
 
-footer a {
-    color: #f1c40f;
-    text-decoration: none;
-}
 /* responsive media queries */
 @media screen and (max-width: 768px) {
 
