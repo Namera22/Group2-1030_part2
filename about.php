@@ -8,6 +8,18 @@ $pageAuthor = "John Fitzpatrick";
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
 
+<?php
+include 'settings.php';
+
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "SELECT * FROM about_members";
+$result = mysqli_query($conn, $query);
+?>
 
 <style>
   body {/*embedded css, general font formatting and area padding for the rest of the site, although most sections have a reassigned padding*/
@@ -41,19 +53,35 @@ $pageAuthor = "John Fitzpatrick";
 <h2 class="contribution">Who contributed where?</h2>
 <section id="description">
   
-  <dl class="contribution"><!--defintion list for memeber contributions-->
-    <dt><strong>103815210<img class="dtImage"src="images/Member1.png" alt="Photo of Member1!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed to the index.html page, including layout structure, navigation bar, hero section, maintaining consistency, and accessibility features. "চেষ্টা করলে সব সম্ভব"</dd>
-    <dd>Translation: With effort, everything is possible.</dd>
-    <dt><strong>103534492<img class="dtImage" src="images/Member2.png" alt="Photo of Member 2!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed on the jobs.html page for this project. "ইট মারলে পাটকেল খেতে হয়।"</dd>
-    <dd>If you throw a brick at someone, you will also be hit by a brick at some point.</dd>
-    <dt><strong>106319524<img class="dtImage" src="images/Member3.png" alt="Photo of Member 3!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed to the apply.html application page. I have made a form for users to fill out with their details for joining the smart city infrastructure consultancy team. "Palos y piedras pueden romper mis huesos, pero las palabras nunca me harán daño"</dd>
-    <dd>Sticks and stones may break your bones but words can never hurt you!</dd>
-    <dt><strong>106504032<img class="dtImage" src="images/Member4.png" alt="Photo of Member 4!" title="Group-photo"/></strong></dt>
-    <dd>I worked on the About.html page(this one!), "強力な労働力の鍵はオープンなコミュニケーションです"</dd>
-    <dd>the key to a strong work force is open communication</dd>
+  <dl class="contribution">
+
+<?php
+while ($row = mysqli_fetch_assoc($result)) {
+?>
+
+    <dt>
+        <strong>
+            <?php echo $row['student_id']; ?>
+
+            <img class="dtImage"
+                 src="<?php echo $row['image']; ?>"
+                 alt="Photo of Member"
+                 title="Group-photo"/>
+        </strong>
+    </dt>
+
+    <dd>
+        <?php echo $row['contribution']; ?>
+    </dd>
+
+    <dd>
+        <?php echo $row['translation']; ?>
+    </dd>
+
+<?php
+}
+?>
+
 </dl></section>
 
 <section id="tables">

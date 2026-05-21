@@ -72,9 +72,11 @@ dt{/*makes the hover register smaller so it doesnt look horrible trying to scrol
     padding: 0.5em;
 }
 .dtImage { /*sets images to not appear normally and are smaller in dimensions */
-    display: none;
-    width: 50%;
-    height: 10%;
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 dt:hover .dtImage {/*this makes images of individual members appear with the initial hover, GenAI was used for display formatting */

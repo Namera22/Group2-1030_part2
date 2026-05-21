@@ -43,6 +43,8 @@ body {
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 /* LOGO */
@@ -106,26 +108,35 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  flex: 0 0 236px;
+  width: 236px;
 
-  flex-shrink: 1;
-  min-width: 0;
 }
 
 .nav-search input {
+  box-sizing: border-box;
+  flex: 0 0 164px;
+  height: 36px;
   border: none;
   padding: 10px 12px;
-  width: 140px;
-  min-width: 60px;
+  width: 164px;
   font-size: 14px;
+  line-height: normal;
+  text-align: left;
   outline: none;
 }
 
 .nav-search button {
+  box-sizing: border-box;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 36px;
   border: none;
   background: #3498db;
   color: white;
   padding: 10px 14px;
   font-size: 14px;
+  line-height: normal;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -191,12 +202,18 @@ input:focus {
   }
 
   .nav-search input {
+    flex-basis: 90px;
     width: 90px;
   }
 
   .nav-search button {
     padding: 10px;
     font-size: 13px;
+  }
+
+  .nav-search {
+    flex-basis: 162px;
+    width: 162px;
   }
 
   .logo-text strong {

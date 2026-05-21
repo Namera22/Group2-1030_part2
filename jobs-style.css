@@ -31,7 +31,7 @@ h1 {
   font-size: 2.2em;
   color: #0a1628;
   margin-bottom: 0.5em;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 h2 {
@@ -81,7 +81,7 @@ a:focus {
 }
 
 /* page header  */
-header {
+#page-wrapper > header {
   padding: 2em 0 1em 0;
   border-bottom: 3px solid #0a1628;
   margin-bottom: 1.5em;

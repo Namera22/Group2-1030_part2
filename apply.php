@@ -22,7 +22,7 @@ $pageStyles = ["global-style.css", "apply-style.css"];
         </header>
 
         <!-- progress card that follows you down the page containing the contents of the page-->
-        <main class="page-wrap">
+        <main class="page-wrap" id="maincontent">
             <aside class="progress-card">
             <h2>Application Sections</h2>
             <ol>
