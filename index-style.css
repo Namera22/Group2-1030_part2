@@ -4,137 +4,13 @@ filename: index-style.css
 
 author: Shushmita Barua
 
-created: 11/04/2026
-
-last modified: 20/04/2026
-
-description: This CSS file contains the styles for the Smart City Nexuswebsite home page. It includes styles for the navigation bar, hero section, services table, search bar, acknowledgement section, and footer. The design focuses on a clean and modern look with a color scheme that reflects the theme of smart city solutions. The styles are responsive and aim to provide a good user experience across different devices.
-It also contains styles for other pages eg: footer, nav bar styling which i will transfer to separate common style file.
+description:
+Homepage-specific styles only.
 
 */
 
-/* style for general body */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(10, 61, 98, 0.95);
-  padding: 10px 0;
-}
+/* HERO SECTION */
 
-/* NAV CONTAINER */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
-}
-
-.logo img {
-  width: 30px;
-}
-
-.logo-text {
-  text-align: left;
-}
-
-.logo-text strong {
-  color: white;
-  font-size: 20px;
-}
-
-.logo-text span {
-  font-size: 12px;
-}
-
-/* MENU */
-.navigation-bar {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.navigation-bar a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.navigation-bar a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* ACTIVE PAGE */
-.navigation-bar .active {
-  background: #f1c40f;
-  color: black;
-}
-
-/* SEARCH BAR */
-.nav-search {
-  display: flex;
-  align-items: center;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-
-  flex-shrink: 1;
-  min-width: 0;
-
-}
-
-.nav-search input {
-  border: none;
-  padding: 10px 12px;
-  width: 140px;
-  min-width: 60px;
-  font-size: 14px;
-  outline: none;
-}
-
-.nav-search button {
-  border: none;
-  background: #3498db;
-  color: white;
-  padding: 10px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.nav-search button:hover {
-  background: #2980b9;
-}
-
-/* ACTIVE */
-.navigation-bar .active {
-  background: #f1c40f;
-  color: black;
-}
-
-/* styling the hero class*/
 .hero {
   background-image: url("./images/smartcity.jpg");
   background-size: cover;
@@ -149,7 +25,8 @@ body {
   height: 60%;
 }
 
-/* styling of the button */
+/* BUTTON */
+
 .btn {
   background: gold;
   padding: 10px;
@@ -157,21 +34,22 @@ body {
   text-decoration: none;
 }
 
-/* styling the table */
+/* TABLE */
+
 table {
   border-collapse: collapse;
   margin: 20px auto;
-  width:60%
+  width: 60%;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   padding: 10px;
 }
 
+/* ACKNOWLEDGEMENT */
 
-
-/* styling the acknowledgement section */
 .acknowledgement {
   background: #e8f4f8;
   padding: 20px;
@@ -179,68 +57,10 @@ th, td {
   text-align: center;
 }
 
-/* styling the footer */
-footer {
-  background: #0e3e60;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
-
-footer a {
-    color: #f1c40f;
-    text-decoration: none;
-}
-
-/* ACCESSIBILITY */
-
-.skip-link {
-  position: absolute;
-  left: -9999px;
-}
-
-.skip-link:focus {
-  left: 10px;
-  top: 10px;
-  background: yellow;
-  color: black;
-  padding: 10px;
-  z-index: 1001;
-}
-
-a:focus,
-button:focus,
-input:focus {
-  outline: 3px solid #f1c40f;
-  outline-offset: 2px;
-}
+/* RESPONSIVE PAGE CONTENT */
 
 @media screen and (max-width: 786px) {
 
-  .nav-container {
-    gap: 15px;
-  }
-
-  .navigation-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-search input {
-  width: 90px;
-}
-
-.nav-search button {
-  padding: 10px;
-  font-size: 13px;
-}
-  .logo-text strong {
-    font-size: 22px;
-  }
-
-  .logo-text span {
-    font-size: 11px;
-  }
   .hero {
     height: auto;
   }
