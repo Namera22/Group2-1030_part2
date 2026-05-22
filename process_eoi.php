@@ -2,7 +2,7 @@
 require_once 'settings.php';
     session_start();
     $errors = array();
-    $conn = mysqli_connect($host, $user, $password, $database);
+    $conn = mysqli_connect($host, $user, $pwd, $sql_db);
     function sanitise_input($data, $conn) {
         $data = trim($data);
         $data = stripslashes($data);
