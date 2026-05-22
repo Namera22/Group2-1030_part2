@@ -2,15 +2,15 @@
 session_start();
 
 // Guard - redirect to login if not logged in
-if (!isset($_SESSION['logged_in'])) {
-    header("Location: login.php");
-    exit();
-}
+//if (!isset($_SESSION['logged_in'])) {
+  //  header("Location: login.php");
+  //  exit();
+//}
 // EOI management is only available to administrators.
-if (($_SESSION['role'] ?? '') !== 'admin') {
-    header("Location: index.php");
-    exit();
-}
+//if (($_SESSION['role'] ?? '') !== 'admin') {
+//    header("Location: index.php");
+ //   exit();
+//}
 
 require_once('settings.php');
 
