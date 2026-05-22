@@ -91,17 +91,17 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                             <label for="gender">Your Gender<span class="required">*</span></label>
                             <p>
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="male" required>
+                                    <input type="radio" name="gender" id="male" value="male" required>
                                     <span>Male</span>
                                 </label>
 
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="female" required>
+                                    <input type="radio" name="gender" id="female" value="female" required>
                                     <span>Female</span>
                                 </label>
 
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="na" required>
+                                    <input type="radio" name="gender" id="prefernotsay" value="prefer not say" required>
                                     <span>Prefer not say</span>
                                 </label>
                             </p>
@@ -156,14 +156,14 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                             <label for="state">State/Territory<span class="required">*</span></label>
                             <select name="state" id="state">
                                 <option value="select">Please select</option>
-                                <option value="state1">VIC</option>
-                                <option value="state2">NSW</option>
-                                <option value="state3">QLD</option>
-                                <option value="state4">WA</option>
-                                <option value="state5">SA</option>
-                                <option value="state6">ACT</option>
-                                <option value="state7">NT</option>
-                                <option value="state8">TAS</option>
+                                <option value="VIC">VIC</option>
+                                <option value="NSW">NSW</option>
+                                <option value="QLD">QLD</option>
+                                <option value="WA">WA</option>
+                                <option value="SA">SA</option>
+                                <option value="ACT">ACT</option>
+                                <option value="NT">NT</option>
+                                <option value="TAS">TAS</option>
                             </select>
                         </div>
 
