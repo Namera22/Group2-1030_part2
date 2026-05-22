@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "";
-$database = "smartcity_db";
+$pwd = "";
+$sql_db = "smartcity_db";
 ?>

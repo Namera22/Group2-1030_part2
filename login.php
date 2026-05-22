@@ -8,7 +8,7 @@ if (isset($_SESSION['logged_in'])) {
 }
 
 include 'settings.php';
-$conn = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 $error = "";
 
