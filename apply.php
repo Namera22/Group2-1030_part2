@@ -52,12 +52,12 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     <div class="form-grid two-column">
                         <div class="form-elements">
                             <label for="job_reference">Job Reference<span class="required">*</span></label>
-                            <input type="text" name="job_reference" maxlength="5" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Job Reference Number" id="job-reference" required>
+                            <input type="text" name="job_reference" maxlength="5" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Job Reference Number" id="job_reference" required>
                         </div>
 
                         <div class="form-elements">
                             <label for="job_description" class="unrequired">Job Description</label>
-                            <input type="text" name="job_description" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Details of the role" id="job-description">
+                            <input type="text" name="job_description" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Details of the role" id="job_description">
                         </div>
                     </div>
                 </section>
@@ -74,12 +74,12 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     <div class="form-grid two-column">
                         <div class="form-elements">
                             <label for="first_name">First Name<span class="required">*</span></label>
-                            <input type="text" name="first_name" maxlength="20" pattern="^[a-zA-Z]+" placeholder="First Name" required id="first-name">
+                            <input type="text" name="first_name" maxlength="20" pattern="^[a-zA-Z]+" placeholder="First Name" required id="first_name" autocomplete="given-name">
                         </div>
                     
                         <div class="form-elements">
                             <label for="last_name">Last Name<span class="required">*</span></label>
-                            <input type="text" name="last_name" maxlength="20" pattern="^[a-zA-Z]+" placeholder="Last Name" required id="last-name">
+                            <input type="text" name="last_name" maxlength="20" pattern="^[a-zA-Z]+" placeholder="Last Name" required id="last_name" autocomplete="family-name">
                         </div>
 
                         <div class="form-elements">
@@ -87,25 +87,21 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                             <input type="date" name="dob" id="dob" required>
                         </div>
 
-                        <div class="form-elements">
-                            <label for="gender">Your Gender<span class="required">*</span></label>
-                            <p>
-                                <label class="radio-option">
-                                    <input type="radio" name="gender" id="male" value="male" required>
-                                    <span>Male</span>
-                                </label>
-
-                                <label class="radio-option">
-                                    <input type="radio" name="gender" id="female" value="female" required>
-                                    <span>Female</span>
-                                </label>
-
-                                <label class="radio-option">
-                                    <input type="radio" name="gender" id="prefernotsay" value="prefer not say" required>
-                                    <span>Prefer not say</span>
-                                </label>
-                            </p>
-                        </div>
+                        <fieldset>
+                            <legend>Your Gender<span class="required">*</span></legend>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" id="male" value="male">
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" id="female" value="female">
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" id="prefernotsay" value="prefer not say">
+                                <span>Prefer not say</span>
+                            </label>
+                        </fieldset>
                     </div>
                 </section>
 
@@ -120,12 +116,12 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     <div class="form-grid two-column">
                         <div class="form-elements">
                             <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" name="email" id="email" placeholder="you@example.com" required>
+                            <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
                         </div>
 
                         <div class="form-elements">
                             <label for="phone">Contact Number <span class="required">*</span></label>
-                            <input type="text" id="phone" name="phone" placeholder="0123-456-789" pattern="^[0-9]{8-12}" maxlength="12">
+                            <input type="text" id="phone" name="phone" placeholder="0123-456-789" pattern="^[0-9]{8-12}" maxlength="12" autocomplete="tel">
                         </div>
 
                             
@@ -144,7 +140,7 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     <div class="form-grid two-column">
                             <div class="form-elements">
                             <label for="address">Street Address<span class="required">*</span></label>
-                            <input type="text" name="address" id="address" placeholder="Address" maxlength="40">
+                            <input type="text" name="address" id="address" placeholder="Address" maxlength="40" autocomplete="street-address">
                         </div>
 
                         <div class="form-elements">
@@ -169,7 +165,7 @@ $pageStyles = ["global-style.css", "apply-style.css"];
 
                         <div class="form-elements">
                             <label for="postcode">Postcode<span class="required">*</span></label>
-                            <input type="text" name="postcode" id="postcode" maxlength="4" placeholder="Postcode">
+                            <input type="text" name="postcode" id="postcode" maxlength="4" placeholder="Postcode" autocomplete="postal-code">
                         </div>
                     </div>
                 </section>
@@ -295,7 +291,7 @@ $pageStyles = ["global-style.css", "apply-style.css"];
 
                 <section class="form-section" id="submit">
                     <div class="section-heading">
-                        <span class="section-number">5</span>
+                        <span class="section-number">6</span>
                         <div>
                             <h2>Submit</h2>
                             <p>Make sure you have answered all of the required <span class="required">*</span></p>

@@ -20,7 +20,19 @@ require_once 'settings.php';
         }
         $job_description = sanitise_input($_POST["job_description"], $conn);
         $first_name = sanitise_input($_POST["first_name"], $conn);
+        if(empty($first_name)){
+            $errors[]= "Please enter your first name";
+        }
+        if(!preg_match("/^[a-z]{1,20}$/i", $first_name)){
+            $errors[]= "Please enter a valid first name";
+        }
         $last_name = sanitise_input($_POST["last_name"], $conn);
+        if(empty($last_name)){
+            $errors[]= "Please enter your last name";
+        }
+        if(!preg_match("/^[a-z]{1,20}$/i", $last_name)){
+            $errors[]= "Please enter a valid last name";
+        }
         $dob = $_POST["dob"] ?? null;
         $gender = sanitise_input($_POST["gender"], $conn);
         $email = sanitise_input($_POST["email"], $conn);
