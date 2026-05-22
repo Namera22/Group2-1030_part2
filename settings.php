@@ -2,5 +2,5 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "smartcity_db";
+$database = "project2";
 ?>
