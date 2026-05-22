@@ -72,9 +72,11 @@ dt{/*makes the hover register smaller so it doesnt look horrible trying to scrol
     padding: 0.5em;
 }
 .dtImage { /*sets images to not appear normally and are smaller in dimensions */
-    display: none;
-    width: 50%;
-    height: 10%;
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 dt:hover .dtImage {/*this makes images of individual members appear with the initial hover, GenAI was used for display formatting */
@@ -88,28 +90,4 @@ section { /* gives all sections a border with shadow to appear to pop out from t
     background: #ffffff;
     border-radius: 18px;
     box-shadow: 0 10px 30px gray;
-}
-
-/* nav bar style */
-.nav {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  background: #0a3d62;
-  padding: 10px;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-}
-
-.nav a:hover {
-  background: #2e6f85;
-}
-
-.nav a:focus {
-  outline: 2px solid yellow;
 }

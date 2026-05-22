@@ -1,54 +1,25 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset = "utf-8">
-    <meta name = "description" content = "G02-About page for web technology project">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="John Fitzpatrick">
-    <meta name="keywords" content="Swinburne, metadata, web development">
-    <link  rel="stylesheet" href="about-style.css">
-    <link rel="stylesheet" href="index-style.css">
-    <title>About us</title><!--meta data-->
-</head>
+<?php
+$pageTitle = "About Us - SmartCity Infrastructure Consultancy";
+$pageDescription = "About the SmartCity Infrastructure Consultancy team members and contributions.";
+$pageKeywords = "about us, team members, contributions, SmartCity";
+$pageAuthor = "John Fitzpatrick";
+?>
 
-<body>
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
 
-<nav class="navbar">
+<?php
+include 'settings.php';
 
-  <div class="nav-container">
+$conn = mysqli_connect($host, $user, $password, $database);
 
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-      <div class="logo-text">
-        <strong>SmartCity</strong>
-        <span>Infrastructure Consultancy</span>
-      </div>
-    </div>
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-    <!-- MENU -->
-    <ul class="navigation-bar">
-      <li><a href="index.php" >Home</a></li>
-      <li><a href="jobs.php">Jobs</a></li>
-      <li><a href="apply.php">Apply</a></li>
-      <li><a href="about.php"class="active">About</a></li>
-    </ul>
-    <!-- SEARCH BAR -->
-<form class="nav-search">
-
-  <input type="text" id="search" placeholder="Search...">
-
-  <button type="submit">Search</button>
-
-</form>
-
-  </div>
-
-</nav>
-<h1 style="color:#0A3D62;"><strong>About us!</strong></h1>
-    <!--inline CSS ^--> 
-
-
+$query = "SELECT * FROM about_members";
+$result = mysqli_query($conn, $query);
+?>
 
 <style>
   body {/*embedded css, general font formatting and area padding for the rest of the site, although most sections have a reassigned padding*/
@@ -56,12 +27,19 @@
     background: #ffffff;
     line-height: 1.5;
     margin: 0;
-    padding: 1.5em;
+    padding: 0;
     overflow-y: auto;
 }
 </style>
 
+<main id="maincontent">
+
+<h1 style="color:#0A3D62;"><strong>About us!</strong></h1>
+    <!--inline CSS ^--> 
+
+
 <h2 id="parent_nestidlist">Class Information</h2><!--seperated from section so i can use hover functions-->
+
 <section id="nestedlist">
 
 <ul><!--nested list for class time and day-->
@@ -75,19 +53,35 @@
 <h2 class="contribution">Who contributed where?</h2>
 <section id="description">
   
-  <dl class="contribution"><!--defintion list for memeber contributions-->
-    <dt><strong>103815210<img class="dtImage"src="images/Member1.png" alt="Photo of Member1!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed to the index.html page, including layout structure, navigation bar, hero section, maintaining consistency, and accessibility features. "চেষ্টা করলে সব সম্ভব"</dd>
-    <dd>Translation: With effort, everything is possible.</dd>
-    <dt><strong>103534492<img class="dtImage" src="images/Member2.png" alt="Photo of Member 2!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed on the jobs.html page for this project. "ইট মারলে পাটকেল খেতে হয়।"</dd>
-    <dd>If you throw a brick at someone, you will also be hit by a brick at some point.</dd>
-    <dt><strong>106319524<img class="dtImage" src="images/Member3.png" alt="Photo of Member 3!" title="Group-photo"/></strong></dt>
-    <dd>I have contributed to the apply.html application page. I have made a form for users to fill out with their details for joining the smart city infrastructure consultancy team. "Palos y piedras pueden romper mis huesos, pero las palabras nunca me harán daño"</dd>
-    <dd>Sticks and stones may break your bones but words can never hurt you!</dd>
-    <dt><strong>106504032<img class="dtImage" src="images/Member4.png" alt="Photo of Member 4!" title="Group-photo"/></strong></dt>
-    <dd>I worked on the About.html page(this one!), "強力な労働力の鍵はオープンなコミュニケーションです"</dd>
-    <dd>the key to a strong work force is open communication</dd>
+  <dl class="contribution">
+
+<?php
+while ($row = mysqli_fetch_assoc($result)) {
+?>
+
+    <dt>
+        <strong>
+            <?php echo $row['student_id']; ?>
+
+            <img class="dtImage"
+                 src="<?php echo $row['image']; ?>"
+                 alt="Photo of Member"
+                 title="Group-photo"/>
+        </strong>
+    </dt>
+
+    <dd>
+        <?php echo $row['contribution']; ?>
+    </dd>
+
+    <dd>
+        <?php echo $row['translation']; ?>
+    </dd>
+
+<?php
+}
+?>
+
 </dl></section>
 
 <section id="tables">
@@ -136,16 +130,6 @@
 </section>
 <!--image to take up whole bottom of screen-->
 
+</main>
 
-</body>
-<!--page footer-->
-<footer>
-  <p><a href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira Project Link</a></p>
-  <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
-  <p><a href="mailto:info@smartcity.com">Email Us</a></p>
-  <p><a href="https://namera22.github.io/Group2-1030/">Live Site</a></p>
-</footer>
-
-
-
-</html>
+<?php include 'footer.inc'; ?>

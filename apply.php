@@ -1,52 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="G02-A page where a user can submit an application to join a smart city infrastructure consultancy">
-        <meta name="keywords" content="apply, application, job, recruitment, form, smart city, consultancy">
-        <meta name="author" content="James Heneghan">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index-style.css">
-         <link rel="stylesheet" href="apply-style.css">
-        <title>Smart City infrastructure consultancy</title>
-    </head>
-    <body>
+<?php
+$pageTitle = "Smart City Infrastructure Consultancy";
+$pageDescription = "G02-A page where a user can submit an application to join a smart city infrastructure consultancy";
+$pageKeywords = "apply, application, job, recruitment, form, smart city, consultancy";
+$pageAuthor = "James Heneghan";
+$pageStyles = ["global-style.css", "apply-style.css"];
+?>
+
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
 
         <!-- youtube video was used, the link: https://www.youtube.com/watch?v=e-8RIntUcUg-->
        <header class="hero">
-            <nav class="navbar">
-
-  <div class="nav-container">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-      <div class="logo-text">
-        <strong>SmartCity</strong>
-        <span>Infrastructure Consultancy</span>
-      </div>
-    </div>
-
-    <!-- MENU -->
-    <ul class="navigation-bar">
-      <li><a href="index.php">Home</a></li>
-      <li><a href="jobs.php">Jobs</a></li>
-      <li><a href="apply.php"class="active">Apply</a></li>
-      <li><a href="about.php">About</a></li>
-    </ul>
-        <!-- SEARCH BAR -->
-<form class="nav-search">
-
-  <input type="text" id="search" placeholder="Search...">
-
-  <button type="submit">Search</button>
-
-</form>
-
-  </div>
-
-</nav>
+     
             <div>
                 <video autoplay loop muted plays-inline class="video" loading="lazy">
                     <source src="./images/Credit-to-sony-background-video.mp4" type="video/mp4">
@@ -57,7 +22,7 @@
         </header>
 
         <!-- progress card that follows you down the page containing the contents of the page-->
-        <main class="page-wrap">
+        <main class="page-wrap" id="maincontent">
             <aside class="progress-card">
             <h2>Application Sections</h2>
             <ol>
@@ -126,17 +91,17 @@
                             <label for="gender">Your Gender<span class="required">*</span></label>
                             <p>
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="male" required>
+                                    <input type="radio" name="gender" id="male" value="male" required>
                                     <span>Male</span>
                                 </label>
 
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="female" required>
+                                    <input type="radio" name="gender" id="female" value="female" required>
                                     <span>Female</span>
                                 </label>
 
                                 <label class="radio-option">
-                                    <input type="radio" name="gender" id="na" required>
+                                    <input type="radio" name="gender" id="prefernotsay" value="prefer not say" required>
                                     <span>Prefer not say</span>
                                 </label>
                             </p>
@@ -191,14 +156,14 @@
                             <label for="state">State/Territory<span class="required">*</span></label>
                             <select name="state" id="state">
                                 <option value="select">Please select</option>
-                                <option value="state1">VIC</option>
-                                <option value="state2">NSW</option>
-                                <option value="state3">QLD</option>
-                                <option value="state4">WA</option>
-                                <option value="state5">SA</option>
-                                <option value="state6">ACT</option>
-                                <option value="state7">NT</option>
-                                <option value="state8">TAS</option>
+                                <option value="VIC">VIC</option>
+                                <option value="NSW">NSW</option>
+                                <option value="QLD">QLD</option>
+                                <option value="WA">WA</option>
+                                <option value="SA">SA</option>
+                                <option value="ACT">ACT</option>
+                                <option value="NT">NT</option>
+                                <option value="TAS">TAS</option>
                             </select>
                         </div>
 
@@ -343,11 +308,5 @@
                 </section>
             </form>
         </main>
-        <footer class="footer-elements">
-            <p><a href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira Project Link</a></p>
-            <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
-            <p><a href="https://namera22.github.io/Group2-1030/">Live Site</a></p>
-            <p><a href="mailto:info@smartcity.com">Email Us</a></p>
-        </footer>
-    </body>
-</html>
+
+<?php include 'footer.inc'; ?>

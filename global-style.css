@@ -1,0 +1,267 @@
+/*
+
+filename: global-style.css
+
+author: Shushmita Barua
+
+description:
+Shared reusable styles for:
+- navbar
+- logo
+- navigation
+- footer
+Used across all PHP pages through include files.
+
+*/
+
+/* Added the global styles for the header, footer and nav bar now. will add the global styles for body and accessibility later. */
+
+
+/* GENERAL BODY */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 61, 98, 0.95);
+  padding: 10px 0;
+}
+
+/* NAV CONTAINER */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.logo img {
+  width: 30px;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-text strong {
+  color: white;
+  font-size: 20px;
+}
+
+.logo-text span {
+  font-size: 12px;
+  color: white;
+}
+
+/* MENU */
+.navigation-bar {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-bar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.navigation-bar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ACTIVE PAGE */
+.navigation-bar .active {
+  background: #f1c40f;
+  color: black;
+}
+
+/* SEARCH BAR */
+.nav-search {
+  display: flex;
+  align-items: center;
+  flex: 0 0 236px;
+  width: 236px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-search input {
+  box-sizing: border-box;
+  flex: 0 0 164px;
+  height: 36px;
+  border: none;
+  padding: 10px 12px;
+  width: 164px;
+  font-size: 14px;
+  line-height: normal;
+  text-align: left;
+  outline: none;
+}
+
+.nav-search button {
+  box-sizing: border-box;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 36px;
+  border: none;
+  background: #3498db;
+  color: white;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: normal;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-search button:hover {
+  background: #2980b9;
+}
+
+/* ACCOUNT STATUS */
+.nav-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(4, 24, 39, 0.32);
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav-account strong {
+  color: #f1c40f;
+  font-size: 14px;
+}
+
+.nav-account a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-account a:hover {
+  color: #f1c40f;
+}
+
+/* FOOTER */
+footer {
+  margin-top: auto;
+  background: #0e3e60;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #f1c40f;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+footer p {
+  color: white;
+  margin: 2px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+/* ACCESSIBILITY */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: yellow;
+  color: black;
+  padding: 10px;
+  z-index: 1001;
+}
+
+a:focus,
+button:focus,
+input:focus {
+  outline: 3px solid #f1c40f;
+  outline-offset: 2px;
+}
+
+/* RESPONSIVE NAVBAR */
+
+@media screen and (max-width: 786px) {
+
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .navigation-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-search input {
+    flex-basis: 90px;
+    width: 90px;
+  }
+
+  .nav-search {
+    flex-basis: 162px;
+    width: 162px;
+  }
+
+  .nav-search button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .nav-account {
+    min-height: 34px;
+  }
+
+  .logo-text strong {
+    font-size: 22px;
+  }
+
+  .logo-text span {
+    font-size: 11px;
+  }
+}

@@ -4,174 +4,188 @@ filename: index-style.css
 
 author: Shushmita Barua
 
-created: 11/04/2026
-
-last modified: 20/04/2026
-
-description: This CSS file contains the styles for the Smart City Nexuswebsite home page. It includes styles for the navigation bar, hero section, services table, search bar, acknowledgement section, and footer. The design focuses on a clean and modern look with a color scheme that reflects the theme of smart city solutions. The styles are responsive and aim to provide a good user experience across different devices.
-It also contains styles for other pages eg: footer, nav bar styling which i will transfer to separate common style file.
+description:
+Homepage-specific styles only.
 
 */
 
-/* style for general body */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(10, 61, 98, 0.95);
-  padding: 10px 0;
-}
+/* HERO SECTION */
 
-/* NAV CONTAINER */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
-}
-
-.logo img {
-  width: 30px;
-}
-
-.logo-text {
-  text-align: left;
-}
-
-.logo-text strong {
-  color: white;
-  font-size: 20px;
-}
-
-.logo-text span {
-  font-size: 12px;
-}
-
-/* MENU */
-.navigation-bar {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.navigation-bar a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.navigation-bar a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* ACTIVE PAGE */
-.navigation-bar .active {
-  background: #f1c40f;
-  color: black;
-}
-
-/* SEARCH BAR */
-.nav-search {
-  display: flex;
-  align-items: center;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-
-  flex-shrink: 1;
-  min-width: 0;
-
-}
-
-.nav-search input {
-  border: none;
-  padding: 10px 12px;
-  width: 140px;
-  min-width: 60px;
-  font-size: 14px;
-  outline: none;
-}
-
-.nav-search button {
-  border: none;
-  background: #3498db;
-  color: white;
-  padding: 10px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.nav-search button:hover {
-  background: #2980b9;
-}
-
-/* ACTIVE */
-.navigation-bar .active {
-  background: #f1c40f;
-  color: black;
-}
-
-/* styling the hero class*/
 .hero {
-  background-image: url("./images/smartcity.jpg");
-  background-size: cover;
+  position: relative;
+  display: grid;
+  place-items: center;
   height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -7%;
+  z-index: -2;
+  background-image: url("./images/smartcity.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: city-background-motion 22s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(4, 18, 31, 0.28);
 }
 
 .overlay {
-  background: rgba(16, 12, 12, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  background: rgba(16, 12, 12, 0.18);
   color: white;
   text-align: center;
-  padding-top: 200px;
-  height: 60%;
+  padding: 200px 20px 0;
+  box-sizing: border-box;
 }
 
-/* styling of the button */
+.overlay h1 {
+  max-width: 1120px;
+  margin: 0;
+  color: #f3f5f7;
+  font-family:
+    "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Arial, sans-serif;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+.overlay p {
+  max-width: 640px;
+  margin: 22px 0 28px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes city-background-motion {
+  0% {
+    transform: scale(1.04) translate3d(-1.5%, -1%, 0);
+  }
+
+  50% {
+    transform: scale(1.1) translate3d(1%, 0.5%, 0);
+  }
+
+  100% {
+    transform: scale(1.07) translate3d(2%, -0.5%, 0);
+  }
+}
+
+/* BUTTON */
+
 .btn {
-  background: gold;
-  padding: 10px;
-  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 28px;
+  border: 2px solid #f1c40f;
+  border-radius: 6px;
+  background: #f1c40f;
+  color: #0a1628;
+  font-size: 19px;
+  font-weight: 800;
   text-decoration: none;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
-/* styling the table */
-table {
-  border-collapse: collapse;
-  margin: 20px auto;
-  width:60%
+.btn:hover {
+  background: #ffd84d;
+  border-color: #ffd84d;
 }
 
-th, td {
-  border: 1px solid black;
-  padding: 10px;
+/* SERVICES */
+
+.services-section {
+  background: #f4f8fb;
+  border-top: 1px solid #d7e4ee;
+  border-bottom: 1px solid #d7e4ee;
+  padding: 64px 24px;
 }
 
+.services-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
+.services-section h2 {
+  color: #0a1628;
+  font-size: 32px;
+  margin: 0 0 24px;
+  padding-left: 18px;
+  border-left: 6px solid #f1c40f;
+}
 
-/* styling the acknowledgement section */
+.services-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #b7cbd9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(10, 22, 40, 0.1);
+}
+
+.services-table th,
+.services-table td {
+  border: 0;
+  padding: 20px 24px;
+  text-align: left;
+}
+
+.services-table th {
+  background: #0a3d62;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.services-table td {
+  border-top: 1px solid #d7e4ee;
+  color: #0a1628;
+  font-size: 17px;
+}
+
+.services-table .service-category {
+  width: 34%;
+  background: #e8f4f8;
+  color: #0a3d62;
+  font-weight: 700;
+  border-right: 1px solid #d7e4ee;
+}
+
+.services-table tbody tr:hover td {
+  background: #f7fbfe;
+}
+
+.services-table tbody tr:hover .service-category {
+  background: #dcedf5;
+}
+
+/* ACKNOWLEDGEMENT */
+
 .acknowledgement {
   background: #e8f4f8;
   padding: 20px;
@@ -179,77 +193,54 @@ th, td {
   text-align: center;
 }
 
-/* styling the footer */
-footer {
-  background: #0e3e60;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
-
-footer a {
-    color: #f1c40f;
-    text-decoration: none;
-}
-
-/* ACCESSIBILITY */
-
-.skip-link {
-  position: absolute;
-  left: -9999px;
-}
-
-.skip-link:focus {
-  left: 10px;
-  top: 10px;
-  background: yellow;
-  color: black;
-  padding: 10px;
-  z-index: 1001;
-}
-
-a:focus,
-button:focus,
-input:focus {
-  outline: 3px solid #f1c40f;
-  outline-offset: 2px;
-}
+/* RESPONSIVE PAGE CONTENT */
 
 @media screen and (max-width: 786px) {
 
-  .nav-container {
-    gap: 15px;
-  }
-
-  .navigation-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-search input {
-  width: 90px;
-}
-
-.nav-search button {
-  padding: 10px;
-  font-size: 13px;
-}
-  .logo-text strong {
-    font-size: 22px;
-  }
-
-  .logo-text span {
-    font-size: 11px;
-  }
   .hero {
     height: auto;
+    min-height: 520px;
   }
 
   .overlay {
-    padding: 180px 20px 100px;
+    padding: 170px 20px 100px;
+    min-height: 520px;
   }
 
-  table {
-    width: 90%;
+  .overlay h1 {
+    font-size: 42px;
+  }
+
+  .overlay p {
+    margin: 18px 0 24px;
+    font-size: 19px;
+  }
+
+  .btn {
+    min-height: 48px;
+    padding: 0 22px;
+    font-size: 17px;
+  }
+
+  .services-section {
+    padding: 42px 16px;
+  }
+
+  .services-section h2 {
+    font-size: 26px;
+    padding-left: 12px;
+  }
+
+  .services-table th,
+  .services-table td {
+    padding: 16px;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    animation: none;
+    transform: scale(1.06);
   }
 }

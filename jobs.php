@@ -15,52 +15,17 @@ if (isset($_GET['search']) && $_GET['search'] !== "") {
 $result = mysqli_query($conn, $query);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$pageTitle = "Job Positions | Smart City Infrastructure Consultancy";
+$pageDescription = "G02-Job Positions at Smart City Infrastructure Consultancy Careers";
+$pageKeywords = "smart city, jobs, careers, urban infrastructure, transport, IoT";
+$pageAuthor = "Namera Nayat";
+$pageStyles = ["global-style.css", "jobs-style.css"];
+?>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="G02-Job Positions at Smart City Infrastructure Consultancy Careers" />
-    <meta name="keywords" content="smart city, jobs, careers, urban infrastructure, transport, IoT" />
-    <meta name="author" content="Namera Nayat" />
-    <link rel="stylesheet" href="jobs-style.css" />
-    <link rel="stylesheet" href="index-style.css">
-    <title>Job Positions | Smart City Infrastructure Consultancy</title>
-</head>
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
 
-<body>
-    <nav class="navbar">
-
-        <div class="nav-container">
-
-            <!-- LOGO -->
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
-                <div class="logo-text">
-                    <strong>SmartCity</strong>
-                    <span>Infrastructure Consultancy</span>
-                </div>
-            </div>
-
-            <!-- MENU -->
-            <ul class="navigation-bar" aria-label="Main navigation">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="jobs.php" class="active" aria-current="page">Jobs</a></li>
-                <li><a href="apply.php">Apply</a></li>
-                <li><a href="about.php">About</a></li>
-            </ul>
-    <!-- SEARCH BAR -->
-<form class="nav-search">
-
-  <input type="text" id="search" placeholder="Search...">
-
-  <button type="submit">Search</button>
-
-</form>
-        </div>
-
-    </nav>
     <!-- Page wrapper -->
     <div id="page-wrapper">
 
@@ -192,15 +157,4 @@ $result = mysqli_query($conn, $query);
 
     </div><!-- end #page-wrapper -->
 
-    <footer>
-        <p><a
-                href="https://cos-10026-assignment-group-2.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMjAzY2JkYzZhZTNmNDBkNmJhMTc3MjE3NDM2OTUzNDQiLCJwIjoiaiJ9">Jira
-                Project Link</a></p>
-        <p><a href="https://github.com/Namera22/Group2-1030.git">GitHub Repository</a></p>
-        <p><a href="mailto:info@smartcity.com">Email Us</a></p>
-        <p><a href="https://namera22.github.io/Group2-1030/">Live Site</a></p>
-    </footer>
-
-</body>
-
-</html>
+<?php include 'footer.inc'; ?>
