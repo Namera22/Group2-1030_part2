@@ -2,15 +2,15 @@
 session_start();
 
 // Guard - redirect to login if not logged in
-//if (!isset($_SESSION['logged_in'])) {
-  //  header("Location: login.php");
-  //  exit();
-//}
-// EOI management is only available to administrators.
-//if (($_SESSION['role'] ?? '') !== 'admin') {
-//    header("Location: index.php");
- //   exit();
-//}
+if (!isset($_SESSION['logged_in'])) {
+    header("Location: login.php");
+    exit();
+}
+ //EOI management is only available to administrators.
+if (($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: index.php");
+   exit();
+}
 
 require_once('settings.php');
 
@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
 
     if ($action === 'update_status') {
-        $eoi_id = (int) $_POST['eoi_id'];
+        $EOInumber = (int) $_POST['EOInumber'];
         $new_status = trim($_POST['status'] ?? '');
 
-        if ($eoi_id > 0 && in_array($new_status, ['New', 'Current', 'Final'])) {
-            $update_query = "UPDATE $table SET status = '$new_status' WHERE eoi_id = $eoi_id";
+        if ($EOInumber > 0 && in_array($new_status, ['New', 'Current', 'Final'])) {
+            $update_query = "UPDATE $table SET status = '$new_status' WHERE EOInumber = $EOInumber";
             if (mysqli_query($conn, $update_query)) {
-                $msg = "Status updated to '$new_status' for EOI #$eoi_id.";
+                $msg = "Status updated to '$new_status' for EOI #$EOInumber.";
             } else {
                 $msg = "Error updating status: " . mysqli_error($conn);
                 $msg_type = "error";
@@ -95,8 +95,8 @@ if (!empty($where_clauses)) {
 // -------------------------------------------------------
 // 3. Sort field and direction
 // -------------------------------------------------------
-$allowed_sorts = ['eoi_id', 'job_reference', 'first_name', 'last_name', 'status'];
-$sort_field = 'eoi_id';
+$allowed_sorts = ['EOInumber', 'job_reference', 'first_name', 'last_name', 'status'];
+$sort_field = 'EOInumber';
 if (!empty($_GET['sort_by']) && in_array($_GET['sort_by'], $allowed_sorts)) {
     $sort_field = $_GET['sort_by'];
 }
@@ -157,7 +157,7 @@ $pageAuthor = "Group 2";
                     <div class="form-group">
                         <label for="sort_by">Sort By</label>
                         <select name="sort_by" id="sort_by">
-                            <option value="eoi_id"        <?php if ($sort_field === 'eoi_id')        echo 'selected'; ?>>EOI ID</option>
+                            <option value="eoi"        <?php if ($sort_field === 'eoi_id')        echo 'selected'; ?>>EOI ID</option>
                             <option value="job_reference" <?php if ($sort_field === 'job_reference') echo 'selected'; ?>>Job Reference</option>
                             <option value="first_name"    <?php if ($sort_field === 'first_name')    echo 'selected'; ?>>First Name</option>
                             <option value="last_name"     <?php if ($sort_field === 'last_name')     echo 'selected'; ?>>Last Name</option>
