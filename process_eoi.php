@@ -17,6 +17,18 @@ require_once 'settings.php';
     state varchar(4) NOT NULL,
     postcode varchar(4) NOT NULL,
     other_skills text DEFAULT NULL,
+    communication tinyint(1) DEFAULT NULL,
+    problem_solving tinyint(1) DEFAULT NULL,
+    leadership tinyint(1) DEFAULT NULL,
+    technical tinyint(1) DEFAULT NULL,
+    time_management tinyint(1) DEFAULT NULL,
+    teamwork tinyint(1) DEFAULT NULL,
+    adaptability tinyint(1) DEFAULT NULL,
+    data_analysis tinyint(1) DEFAULT NULL,
+    customer_service tinyint(1) DEFAULT NULL,
+    project_management tinyint(1) DEFAULT NULL,
+    critical_thinking tinyint(1) DEFAULT NULL,
+    attention_to_detail tinyint(1) DEFAULT NULL,
     status enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW',
     PRIMARY KEY (EOInumber)
 )";
@@ -90,7 +102,7 @@ mysqli_query($conn, $create);
             $errors[]= "Please enter your postcode";
         }
         if(!preg_match("/^[0-9]{4}$/", $postcode)){
-            $errors[]= "Please enter a valid phone number";
+            $errors[]= "Please enter a valid postcode";
         }
         $communication = isset($_POST["communication"]) ? 1 : 0;
         $problem_solving = isset($_POST["problem_solving"]) ? 1 : 0;
@@ -112,22 +124,21 @@ mysqli_query($conn, $create);
         if(!empty($errors)) {
             foreach($errors as $error) {
                 echo "<p style='color:red;'>$error</p>";
-        }
-        } else {
+        }}
+        else {
             $query = "INSERT INTO EOI (job_reference, job_description, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
             postcode, communication, problem_solving, leadership, technical, time_management, teamwork, adaptability, data_analysis, customer_service,
              project_management, critical_thinking, attention_to_detail, other_skills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
               '$gender', '$email', '$phone', '$address', '$suburbtown', '$state', '$postcode', '$communication', '$problem_solving', '$leadership', '$technical', '$time_management',
                '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$other_skills')";
             $result = mysqli_query($conn, $query);
+            if ($result) {
+                $eoi_number = mysqli_insert_id($conn);
+                echo "<p>Application submitted successfully! Your EOI number is: <strong>$eoi_number</strong></p>";
+            } else {
+                echo "<p>Error submitting application. Please try again.</p>";
+            }
         }
-        if ($result) {
-            $eoi_number = mysqli_insert_id($conn);
-            echo "<p>Application submitted successfully! Your EOI number is: <strong>$eoi_number</strong></p>";
-        } else {
-            echo "<p>Error submitting application. Please try again.</p>";
-        }
-
     }
     else{
     header('Location: index.php');
