@@ -45,6 +45,9 @@ mysqli_query($conn, $create);
         if(empty($job_reference)){
             $errors[]= "Please enter the job reference number";
         }
+        if(empty($job_reference)){
+            echo"<p>Cannot be empty</p>";
+        }
         if(!preg_match("/^[a-z0-9]{5}$/i", $job_reference)){
             $errors[]= "Please enter a reference number with the correct parameters (a-z, A-Z, 0-9)";
         }
