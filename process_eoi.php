@@ -30,6 +30,7 @@ require_once 'settings.php';
     project_management tinyint(1) DEFAULT NULL,
     critical_thinking tinyint(1) DEFAULT NULL,
     attention_to_detail tinyint(1) DEFAULT NULL,
+    other_skills text DEFAULT NULL,
     status enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW',
     PRIMARY KEY (EOInumber)
 )";
@@ -119,7 +120,7 @@ mysqli_query($conn, $create);
         if(($communication + $problem_solving + $leadership + $technical + $time_management + $teamwork + $adaptability + $data_analysis + $customer_service + $project_management + $critical_thinking + $attention_to_detail) == 0){
             $errors[] = "Please select at least one skill";
         }
-        $other_skills = sanitise_input($_POST["other_skills"], $conn);
+        $otherskills = sanitise_input($_POST["otherskills"], $conn);
     
         if(!empty($errors)) {
             foreach($errors as $error) {
@@ -129,9 +130,9 @@ mysqli_query($conn, $create);
         else {
             $query = "INSERT INTO EOI (job_reference, job_description, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
             postcode, communication, problem_solving, leadership, technical, time_management, teamwork, adaptability, data_analysis, customer_service,
-             project_management, critical_thinking, attention_to_detail, other_skills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
+             project_management, critical_thinking, attention_to_detail, otherskills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
               '$gender', '$email', '$phone', '$address', '$suburbtown', '$state', '$postcode', '$communication', '$problem_solving', '$leadership', '$technical', '$time_management',
-               '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$other_skills')";
+               '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$otherskills')";
             $result = mysqli_query($conn, $query);
             if ($result) {
                 $eoi_number = mysqli_insert_id($conn);
