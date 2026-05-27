@@ -24,9 +24,7 @@ $table = "eoi";
 $msg = "";
 $msg_type = "success";
 
-// -------------------------------------------------------
-// 1. Handle POST Actions
-// -------------------------------------------------------
+//Handle POST Actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $action = isset($_POST['action']) ? $_POST['action'] : '';
@@ -72,9 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// -------------------------------------------------------
-// 2. Build SELECT query with optional filters
-// -------------------------------------------------------
+
+//Build SELECT query with optional filters
 $where_clauses = [];
 
 if (!empty($_GET['search_job_ref'])) {
@@ -92,9 +89,7 @@ if (!empty($where_clauses)) {
     $query .= " WHERE " . implode(" AND ", $where_clauses);
 }
 
-// -------------------------------------------------------
-// 3. Sort field and direction
-// -------------------------------------------------------
+//Sort field and direction
 $allowed_sorts = ['EOInumber', 'job_reference', 'first_name', 'last_name', 'status'];
 $sort_field = 'EOInumber';
 if (!empty($_GET['sort_by']) && in_array($_GET['sort_by'], $allowed_sorts)) {
@@ -157,7 +152,7 @@ $pageAuthor = "Group 2";
                     <div class="form-group">
                         <label for="sort_by">Sort By</label>
                         <select name="sort_by" id="sort_by">
-                            <option value="eoi"        <?php if ($sort_field === 'eoi_id')        echo 'selected'; ?>>EOI ID</option>
+                            <option value="eoi"        <?php if ($sort_field === 'EOInumber')        echo 'selected'; ?>>EOI ID</option>
                             <option value="job_reference" <?php if ($sort_field === 'job_reference') echo 'selected'; ?>>Job Reference</option>
                             <option value="first_name"    <?php if ($sort_field === 'first_name')    echo 'selected'; ?>>First Name</option>
                             <option value="last_name"     <?php if ($sort_field === 'last_name')     echo 'selected'; ?>>Last Name</option>
@@ -216,7 +211,7 @@ $pageAuthor = "Group 2";
                             <tbody>
                                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                                     <tr>
-                                        <td><strong>#<?php echo htmlspecialchars($row['eoi_id']); ?></strong></td>
+                                        <td><strong>#<?php echo htmlspecialchars($row['EOInumber']); ?></strong></td>
                                         <td><?php echo htmlspecialchars($row['job_reference']); ?></td>
                                         <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
                                         <td>
@@ -228,10 +223,10 @@ $pageAuthor = "Group 2";
                                         <td>
                                             <form action="manage.php" method="POST" style="margin:0;">
                                                 <input type="hidden" name="action" value="update_status">
-                                                <input type="hidden" name="eoi_id" value="<?php echo (int) $row['eoi_id']; ?>">
+                                                <input type="hidden" name="EOInumber" value="<?php echo (int) $row['EOInumber']; ?>">
                                                 <select name="status" class="select-status-inline"
                                                         onchange="this.form.submit()"
-                                                        aria-label="Change status for EOI #<?php echo (int) $row['eoi_id']; ?>">
+                                                        aria-label="Change status for EOI #<?php echo (int) $row['EOInumber']; ?>">
                                                     <option value="New"     <?php if ($row['status'] === 'New')     echo 'selected'; ?>>New</option>
                                                     <option value="Current" <?php if ($row['status'] === 'Current') echo 'selected'; ?>>Current</option>
                                                     <option value="Final"   <?php if ($row['status'] === 'Final')   echo 'selected'; ?>>Final</option>
