@@ -35,12 +35,11 @@ require_once 'settings.php';
 )";
 mysqli_query($conn, $create);
     function sanitise_input($data, $conn) {
-        $data = trim($data)
-        $data = stripslashes($data)
-        $data = htmlspecialchars($data)
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
         $data = mysqli_real_escape_string($conn, $data);
         return $data;}
-    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $job_reference = sanitise_input($_POST["job_reference"], $conn);
         if(empty($job_reference)){
