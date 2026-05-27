@@ -284,8 +284,8 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     </div>
 
                     <div class="form-element-1column">
-                        <label for="otherskills" id="anything-missed">Anything we missed?</label>
-                        <textarea name="otherskills" id="otherskills" rows="4" placeholder="Any other skills?"></textarea>
+                        <label for="other_skills" id="anything-missed">Anything we missed?</label>
+                        <textarea name="other_skills" id="other_skills" rows="4" placeholder="Any other skills?"></textarea>
                     </div>
                 </section>
 
