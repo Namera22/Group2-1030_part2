@@ -138,6 +138,7 @@ mysqli_query($conn, $create);
             if ($result) {
                 $eoi_number = mysqli_insert_id($conn);
                 echo "<p>Application submitted successfully! Your EOI number is: <strong>$eoi_number</strong></p>";
+                echo "<a href='index.php'>Go back to home</a>";
             } else {
                 echo "<p>Error submitting application. Please try again.</p>";
             }
