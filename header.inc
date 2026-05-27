@@ -44,7 +44,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
   ?>
-
+    <link rel="icon" href="images/favicon.ico" type="image/ico"
 </head>
 
 <body>
