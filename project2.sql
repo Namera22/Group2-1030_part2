@@ -77,7 +77,7 @@ CREATE TABLE `EOI` (
   `project_management` tinyint(1) DEFAULT NULL,
   `critical_thinking` tinyint(1) DEFAULT NULL,
   `attention_to_detail` tinyint(1) DEFAULT NULL,
-  `other_skills` text DEFAULT NULL,
+  `otherskills` text DEFAULT NULL,
   `status` enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

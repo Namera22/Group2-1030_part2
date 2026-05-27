@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once 'settings.php';
     session_start();
     $errors = array();
@@ -17,7 +19,6 @@ require_once 'settings.php';
     suburbtown varchar(40) NOT NULL,
     state varchar(4) NOT NULL,
     postcode varchar(4) NOT NULL,
-    other_skills text DEFAULT NULL,
     communication tinyint(1) DEFAULT NULL,
     problem_solving tinyint(1) DEFAULT NULL,
     leadership tinyint(1) DEFAULT NULL,
@@ -41,7 +42,7 @@ mysqli_query($conn, $create);
         $data = htmlspecialchars($data);
         $data = mysqli_real_escape_string($conn, $data);
         return $data;}
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $job_reference = sanitise_input($_POST["job_reference"], $conn);
         if(empty($job_reference)){
             $errors[]= "Please enter the job reference number";
@@ -49,7 +50,7 @@ mysqli_query($conn, $create);
         elseif(!preg_match("/^[a-z0-9]{5}$/i", $job_reference)){
             $errors[]= "Please enter a reference number with the correct parameters (a-z, A-Z, 0-9)";   
         }
-        $job_description = sanitise_input($_POST["job_description"], $conn);
+        $job_description = isset($_POST["job_description"]) ? sanitise_input($_POST["job_description"], $conn) : "";
         $first_name = sanitise_input($_POST["first_name"], $conn);
         if(empty($first_name)){
             $errors[]= "Please enter your first name";
@@ -120,7 +121,7 @@ mysqli_query($conn, $create);
         if(($communication + $problem_solving + $leadership + $technical + $time_management + $teamwork + $adaptability + $data_analysis + $customer_service + $project_management + $critical_thinking + $attention_to_detail) == 0){
             $errors[] = "Please select at least one skill";
         }
-        $otherskills = sanitise_input($_POST["otherskills"], $conn);
+        $other_skills = isset($_POST["other_skills"]) ? sanitise_input($_POST["other_skills"], $conn) : "";
     
         if(!empty($errors)) {
             foreach($errors as $error) {
@@ -130,9 +131,9 @@ mysqli_query($conn, $create);
         else {
             $query = "INSERT INTO EOI (job_reference, job_description, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
             postcode, communication, problem_solving, leadership, technical, time_management, teamwork, adaptability, data_analysis, customer_service,
-             project_management, critical_thinking, attention_to_detail, otherskills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
+             project_management, critical_thinking, attention_to_detail, other_skills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
               '$gender', '$email', '$phone', '$address', '$suburbtown', '$state', '$postcode', '$communication', '$problem_solving', '$leadership', '$technical', '$time_management',
-               '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$otherskills')";
+               '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$other_skills')";
             $result = mysqli_query($conn, $query);
             if ($result) {
                 $eoi_number = mysqli_insert_id($conn);
