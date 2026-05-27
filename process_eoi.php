@@ -124,7 +124,8 @@ mysqli_query($conn, $create);
         if(!empty($errors)) {
             foreach($errors as $error) {
                 echo "<p style='color:red;'>$error</p>";
-        }}
+        }   echo "<a href='apply.php'>Go back and fix your application</a>";
+        }
         else {
             $query = "INSERT INTO EOI (job_reference, job_description, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
             postcode, communication, problem_solving, leadership, technical, time_management, teamwork, adaptability, data_analysis, customer_service,
