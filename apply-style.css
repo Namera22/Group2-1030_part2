@@ -292,8 +292,14 @@ label {
 }
 
 /* =========================
-   RADIO BUTTONS
+   RADIO 
 ========================= */
+
+fieldset {
+    border-radius: 12px;
+    border: 2px solid #d0d0d0;
+    padding: 1em;
+}
 
 .radio-option {
     display: flex;

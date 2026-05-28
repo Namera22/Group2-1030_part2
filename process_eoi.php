@@ -45,66 +45,65 @@ mysqli_query($conn, $create);
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $job_reference = sanitise_input($_POST["job_reference"], $conn);
         if(empty($job_reference)){
-            $errors[]= "Please enter the job reference number";
+            $errors['job_reference']= "Please enter the job reference number";
         }
         elseif(!preg_match("/^[a-z0-9]{5}$/i", $job_reference)){
-            $errors[]= "Please enter a reference number with the correct parameters (a-z, A-Z, 0-9)";   
+            $errors['job_reference']= "Please enter a reference number with the correct parameters (a-z, A-Z, 0-9)";   
         }
-        $job_description = isset($_POST["job_description"]) ? sanitise_input($_POST["job_description"], $conn) : "";
         $first_name = sanitise_input($_POST["first_name"], $conn);
         if(empty($first_name)){
-            $errors[]= "Please enter your first name";
+            $errors['first_name']= "Please enter your first name";
         }
         elseif(!preg_match("/^[a-z]{1,20}$/i", $first_name)){
-            $errors[]= "Please enter a valid first name";
+            $errors['first_name']= "Please enter a valid first name";
         }  
         $last_name = sanitise_input($_POST["last_name"], $conn);
         if(empty($last_name)){
-            $errors[]= "Please enter your last name";
+            $errors['last_name']= "Please enter your last name";
         }
         elseif(!preg_match("/^[a-z]{1,20}$/i", $last_name)){
-            $errors[]= "Please enter a valid last name";
+            $errors['last_name']= "Please enter a valid last name";
         }
         $dob = $_POST["dob"] ?? null;
         if(empty($dob)){
-            $errors[]= "Please enter your date of birth";
+            $errors['dob']= "Please enter your date of birth";
         }
         $gender = sanitise_input($_POST["gender"], $conn);
         if(empty($gender)){
-            $errors[]= "Please select a gender";
+            $errors['gender']= "Please select a gender";
         }
         $email = sanitise_input($_POST["email"], $conn);
         if(empty($email)){
-            $errors[]= "Please enter your email";
+            $errors['email']= "Please enter your email";
         }
         elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Please enter a valid email address";
+            $errors['email'] = "Please enter a valid email address";
         }
         $phone = sanitise_input($_POST["phone"], $conn);
         if(empty($phone)){
-            $errors[]= "Please enter your phone number";
+            $errors['phone']= "Please enter your phone number";
         }
         elseif(!preg_match("/^[0-9]{8,12}$/", $phone)){
-            $errors[]= "Please enter a valid phone number";
+            $errors['phone']= "Please enter a valid phone number";
         }
         $address = sanitise_input($_POST["address"], $conn);
         if(empty($address)){
-            $errors[]= "Please enter your address";
+            $errors['address']= "Please enter your address";
         }
         $suburbtown = sanitise_input($_POST["suburbtown"], $conn);
         if(empty($suburbtown)){
-            $errors[]= "Please enter your suburb/town";
+            $errors['suburbtown']= "Please enter your suburb/town";
         }
         $state = sanitise_input($_POST["state"], $conn);
         if(empty($state)){
-            $errors[]= "Please enter your state";
+            $errors['state']= "Please enter your state";
         }
         $postcode = sanitise_input($_POST["postcode"], $conn);
         if(empty($postcode)){
-            $errors[]= "Please enter your postcode";
+            $errors['postcode']= "Please enter your postcode";
         }
         elseif(!preg_match("/^[0-9]{4}$/", $postcode)){
-            $errors[]= "Please enter a valid postcode";
+            $errors['postcode']= "Please enter a valid postcode";
         }
         $communication = isset($_POST["communication"]) ? 1 : 0;
         $problem_solving = isset($_POST["problem_solving"]) ? 1 : 0;
@@ -119,26 +118,43 @@ mysqli_query($conn, $create);
         $critical_thinking = isset($_POST["critical_thinking"]) ? 1 : 0;
         $attention_to_detail = isset($_POST["attention_to_detail"]) ? 1 : 0;
         if(($communication + $problem_solving + $leadership + $technical + $time_management + $teamwork + $adaptability + $data_analysis + $customer_service + $project_management + $critical_thinking + $attention_to_detail) == 0){
-            $errors[] = "Please select at least one skill";
+            $errors['skills'] = "Please select at least one skill";
         }
         $other_skills = isset($_POST["other_skills"]) ? sanitise_input($_POST["other_skills"], $conn) : "";
     
         if(!empty($errors)) {
-            foreach($errors as $error) {
-                echo "<p style='color:red;'>$error</p>";
-        }   echo "<a href='apply.php'>Go back and fix your application</a>";
+            $_SESSION['errors'] = $errors;
+            $_SESSION['form_data'] = $_POST;
+            header('Location: apply.php');
+            exit();
         }
         else {
-            $query = "INSERT INTO EOI (job_reference, job_description, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
+            $query = "INSERT INTO EOI (job_reference, first_name, last_name, dob, gender, email, phone, address, suburbtown, state, 
             postcode, communication, problem_solving, leadership, technical, time_management, teamwork, adaptability, data_analysis, customer_service,
-             project_management, critical_thinking, attention_to_detail, other_skills) VALUES ('$job_reference', '$job_description', '$first_name', '$last_name', '$dob',
+             project_management, critical_thinking, attention_to_detail, other_skills) VALUES ('$job_reference', '$first_name', '$last_name', '$dob',
               '$gender', '$email', '$phone', '$address', '$suburbtown', '$state', '$postcode', '$communication', '$problem_solving', '$leadership', '$technical', '$time_management',
                '$teamwork', '$adaptability', '$data_analysis', '$customer_service', '$project_management', '$critical_thinking', '$attention_to_detail', '$other_skills')";
             $result = mysqli_query($conn, $query);
             if ($result) {
                 $eoi_number = mysqli_insert_id($conn);
-                echo "<p>Application submitted successfully! Your EOI number is: <strong>$eoi_number</strong></p>";
-                echo "<a href='index.php'>Go back to home</a>";
+                echo "<!DOCTYPE html>
+                    <html lang='en'>
+                    <head>
+                        <meta charset='UTF-8'>
+                        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                        <title>Application Submitted</title>
+                        <link rel='stylesheet' href='global-style.css'>
+                    </head>
+                    <body>
+                    <div style='max-width:600px; margin:8em auto; text-align:center; padding:2em; border-radius:18px; box-shadow:0 10px 30px gray;'>
+                        <h1 style='color:#0a3d62;'>Application Submitted!</h1>
+                        <p>Thank you for applying. Your EOI number is:</p>
+                        <h2 style='color:#0a3d62; font-size:3em;'>$eoi_number</h2>
+                        <p>Please keep this number for your records.</p>
+                        <a href='index.php' style='display:inline-block; margin-top:1em; padding:0.8em 2em; background:#0a3d62; color:white; border-radius:8px; text-decoration:none;'>Return Home</a>
+                    </div>
+                    </body>
+                    </html>";
             } else {
                 echo "<p>Error submitting application. Please try again.</p>";
             }
