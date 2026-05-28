@@ -4,6 +4,10 @@ $pageDescription = "G02-A page where a user can submit an application to join a 
 $pageKeywords = "apply, application, job, recruitment, form, smart city, consultancy";
 $pageAuthor = "James Heneghan";
 $pageStyles = ["global-style.css", "apply-style.css"];
+require_once 'settings.php';
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+$query = "SELECT ref_number, title FROM jobs";
+$result = mysqli_query($conn, $query);
 ?>
 
 <?php include 'header.inc'; ?>
@@ -52,12 +56,14 @@ $pageStyles = ["global-style.css", "apply-style.css"];
                     <div class="form-grid two-column">
                         <div class="form-elements">
                             <label for="job_reference">Job Reference<span class="required">*</span></label>
-                            <input type="text" name="job_reference" maxlength="5" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Job Reference Number" id="job_reference" required>
-                        </div>
-
-                        <div class="form-elements">
-                            <label for="job_description" class="unrequired">Job Description</label>
-                            <input type="text" name="job_description" required="required" pattern="^[a-zA-Z0-9]+" placeholder="Details of the role" id="job_description">
+                            <select name="job_reference" id="job_reference">
+                            <?php
+                            echo "<option value=''>Please select a job</option>";
+                            while($job = mysqli_fetch_assoc($result)) {
+                                echo "<option value='" . htmlspecialchars($job['ref_number']) . "'>" . htmlspecialchars($job['ref_number']) . " - " . htmlspecialchars($job['title']) . "</option>";
+                            }
+                            ?>
+                            </select>
                         </div>
                     </div>
                 </section>

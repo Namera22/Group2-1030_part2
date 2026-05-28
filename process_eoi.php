@@ -8,7 +8,6 @@ require_once 'settings.php';
     $create = "CREATE TABLE IF NOT EXISTS EOI (
     EOInumber int(11) NOT NULL AUTO_INCREMENT,
     job_reference varchar(5) NOT NULL,
-    job_description varchar(100) DEFAULT NULL,
     first_name varchar(30) NOT NULL,
     last_name varchar(30) NOT NULL,
     dob date NOT NULL,
@@ -33,7 +32,8 @@ require_once 'settings.php';
     attention_to_detail tinyint(1) DEFAULT NULL,
     other_skills text DEFAULT NULL,
     status enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW',
-    PRIMARY KEY (EOInumber)
+    PRIMARY KEY (EOInumber),
+    FOREIGN KEY (job_reference) REFERENCES jobs(ref_number)
 )";
 mysqli_query($conn, $create);
     function sanitise_input($data, $conn) {

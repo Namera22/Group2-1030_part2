@@ -54,7 +54,6 @@ INSERT INTO `about_members` (`member_id`, `student_id`, `image`, `contribution`,
 CREATE TABLE `EOI` (
   `EOInumber` int(11) NOT NULL,
   `job_reference` varchar(5) NOT NULL,
-  `job_description` varchar(100) DEFAULT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `dob` date NOT NULL,
@@ -77,8 +76,9 @@ CREATE TABLE `EOI` (
   `project_management` tinyint(1) DEFAULT NULL,
   `critical_thinking` tinyint(1) DEFAULT NULL,
   `attention_to_detail` tinyint(1) DEFAULT NULL,
-  `otherskills` text DEFAULT NULL,
-  `status` enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW'
+  `other_skills` text DEFAULT NULL,
+  `status` enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW',
+  FOREIGN KEY (job_reference) REFERENCES jobs(ref_number)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
