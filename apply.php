@@ -17,16 +17,16 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
 
-        <!-- youtube video was used, the link: https://www.youtube.com/watch?v=e-8RIntUcUg-->
-       <header class="hero">
-     
-            <div>
-                <video autoplay loop muted plays-inline class="video" loading="lazy">
-                    <source src="./images/Credit-to-sony-background-video.mp4" type="video/mp4">
-                </video>
-                <h1 class="overlay-text">JOIN THE TEAM</h1>
+        <!-- youtube video was used, the link: https://www.youtube.com/watch?v=ZWyv_w_cFiw&t=719s-->
+        <header class="hero">
+        <div class="hero-content">
+            <video class="video" autoplay loop muted playsinline>
+                <source src="./images/royalty_free.mp4" type="video/mp4">
+            </video>
+
+            <h1 class="overlay-text">JOIN THE TEAM</h1>
             <p class="info">Estimated time to apply: 5 to 8 minutes • Fields marked * are required</p>
-            </div>
+        </div>
         </header>
 
         <!-- progress card that follows you down the page containing the contents of the page-->
