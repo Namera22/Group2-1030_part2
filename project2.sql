@@ -11,6 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+SET FOREIGN_KEY_CHECKS=0;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `project2`
 --
+
+CREATE DATABASE IF NOT EXISTS `project2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `project2`;
+
+--
+-- Drop existing tables so the file can be imported more than once
+--
+
+DROP TABLE IF EXISTS `EOI`;
+DROP TABLE IF EXISTS `jobs`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `about_members`;
 
 -- --------------------------------------------------------
 
@@ -44,42 +57,6 @@ INSERT INTO `about_members` (`member_id`, `student_id`, `image`, `contribution`,
 (2, '103534492', 'images/Member2.png', 'I have contributed on the jobs.html page for this project. \"ইট মারলে পাটকেল খেতে হয়।\"', 'Translation: If you throw a brick at someone, you will also be hit by a brick at some point.'),
 (3, '106319524', 'images/Member3.png', 'I have contributed to the apply.html application page. I have made a form for users to fill out with their details for joining the smart city infrastructure consultancy team. \"Palos y piedras pueden romper mis huesos, pero las palabras nunca me harán daño\"', 'Translation: Sticks and stones may break your bones but words can never hurt you!'),
 (4, '106504032', 'images/Member4.png', 'I worked on the About.html page(this one!), \"強力な労働力の鍵はオープンなコミュニケーションです\"', 'Translation: The key to a strong workforce is open communication.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `EOI`
---
-
-CREATE TABLE `EOI` (
-  `EOInumber` int(11) NOT NULL,
-  `job_reference` varchar(5) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `dob` date NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` varchar(12) NOT NULL,
-  `address` varchar(40) NOT NULL,
-  `suburbtown` varchar(40) NOT NULL,
-  `state` varchar(4) NOT NULL,
-  `postcode` varchar(4) NOT NULL,
-  `communication` tinyint(1) DEFAULT NULL,
-  `problem_solving` tinyint(1) DEFAULT NULL,
-  `leadership` tinyint(1) DEFAULT NULL,
-  `technical` tinyint(1) DEFAULT NULL,
-  `time_management` tinyint(1) DEFAULT NULL,
-  `teamwork` tinyint(1) DEFAULT NULL,
-  `adaptability` tinyint(1) DEFAULT NULL,
-  `data_analysis` tinyint(1) DEFAULT NULL,
-  `customer_service` tinyint(1) DEFAULT NULL,
-  `project_management` tinyint(1) DEFAULT NULL,
-  `critical_thinking` tinyint(1) DEFAULT NULL,
-  `attention_to_detail` tinyint(1) DEFAULT NULL,
-  `other_skills` text DEFAULT NULL,
-  `status` enum('NEW','CURRENT','FINAL') NOT NULL DEFAULT 'NEW',
-  FOREIGN KEY (job_reference) REFERENCES jobs(ref_number)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,6 +92,41 @@ INSERT INTO `jobs` (`job_id`, `ref_number`, `title`, `description`, `salary`, `r
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `EOI`
+--
+
+CREATE TABLE `EOI` (
+  `EOInumber` int(11) NOT NULL,
+  `job_reference` varchar(5) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `suburbtown` varchar(40) NOT NULL,
+  `state` varchar(4) NOT NULL,
+  `postcode` varchar(4) NOT NULL,
+  `communication` tinyint(1) DEFAULT NULL,
+  `problem_solving` tinyint(1) DEFAULT NULL,
+  `leadership` tinyint(1) DEFAULT NULL,
+  `technical` tinyint(1) DEFAULT NULL,
+  `time_management` tinyint(1) DEFAULT NULL,
+  `teamwork` tinyint(1) DEFAULT NULL,
+  `adaptability` tinyint(1) DEFAULT NULL,
+  `data_analysis` tinyint(1) DEFAULT NULL,
+  `customer_service` tinyint(1) DEFAULT NULL,
+  `project_management` tinyint(1) DEFAULT NULL,
+  `critical_thinking` tinyint(1) DEFAULT NULL,
+  `attention_to_detail` tinyint(1) DEFAULT NULL,
+  `other_skills` text DEFAULT NULL,
+  `status` enum('New','Current','Final') NOT NULL DEFAULT 'New'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -127,6 +139,9 @@ CREATE TABLE `users` (
 
 --
 -- Dumping data for table `users`
+--
+-- Username: admin
+-- Password: admin
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role`) VALUES
@@ -143,16 +158,18 @@ ALTER TABLE `about_members`
   ADD PRIMARY KEY (`member_id`);
 
 --
--- Indexes for table `EOI`
---
-ALTER TABLE `EOI`
-  ADD PRIMARY KEY (`EOInumber`);
-
---
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`job_id`);
+  ADD PRIMARY KEY (`job_id`),
+  ADD UNIQUE KEY `unique_ref_number` (`ref_number`);
+
+--
+-- Indexes for table `EOI`
+--
+ALTER TABLE `EOI`
+  ADD PRIMARY KEY (`EOInumber`),
+  ADD KEY `idx_eoi_job_reference` (`job_reference`);
 
 --
 -- Indexes for table `users`
@@ -172,22 +189,34 @@ ALTER TABLE `about_members`
   MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `EOI`
---
-ALTER TABLE `EOI`
-  MODIFY `EOInumber` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `EOI`
+--
+ALTER TABLE `EOI`
+  MODIFY `EOInumber` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for table `EOI`
+--
+ALTER TABLE `EOI`
+  ADD CONSTRAINT `fk_eoi_job_reference`
+  FOREIGN KEY (`job_reference`) REFERENCES `jobs` (`ref_number`)
+  ON UPDATE CASCADE
+  ON DELETE RESTRICT;
+
+SET FOREIGN_KEY_CHECKS=1;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
