@@ -1,5 +1,9 @@
 <?php
 session_start();
+$pageTitle = "HR Manager | Smart City Infrastructure Consultancy";
+$pageDescription = "HR manager dashboard for Smart City Infrastructure Consultancy.";
+$pageKeywords = "HR manager, dashboard, Smart City Infrastructure Consultancy";
+$pageAuthor = "Group 2";
 
 // Guard - redirect to login if not logged in
 if (!isset($_SESSION['logged_in'])) {
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $EOInumber = (int) $_POST['EOInumber'];
         $new_status = trim($_POST['status'] ?? '');
 
-        if ($EOInumber > 0 && in_array($new_status, ['New', 'Current', 'Final'])) {
+        if ($EOInumber > 0 && in_array($new_status, ['NEW', 'CURRENT', 'FINAL'])) {
             $update_query = "UPDATE $table SET status = '$new_status' WHERE EOInumber = $EOInumber";
             if (mysqli_query($conn, $update_query)) {
                 $msg = "Status updated to '$new_status' for EOI #$EOInumber.";
@@ -106,12 +110,10 @@ $query .= " ORDER BY $sort_field $sort_dir";
 $result = mysqli_query($conn, $query);
 $row_count = $result ? mysqli_num_rows($result) : 0;
 
-$pageTitle = "HR Manager | Smart City Infrastructure Consultancy";
-$pageDescription = "HR manager dashboard for Smart City Infrastructure Consultancy.";
-$pageKeywords = "HR manager, dashboard, Smart City Infrastructure Consultancy";
-$pageAuthor = "Group 2";
+
 ?>
 <?php include 'header.inc'; ?>
+<link rel="stylesheet" href="manage-style.css">
 <?php include 'nav.inc'; ?>
 
     <main id="maincontent" style="max-width:1100px; margin: 8em auto 3em; padding: 0 2em;">
@@ -204,6 +206,7 @@ $pageAuthor = "Group 2";
                                     <th>EOI ID</th>
                                     <th>Job Ref</th>
                                     <th>Name</th>
+                                    <th>Address</th>
                                     <th>Contact Info</th>
                                     <th>Status</th>
                                 </tr>
@@ -215,8 +218,12 @@ $pageAuthor = "Group 2";
                                         <td><?php echo htmlspecialchars($row['job_reference']); ?></td>
                                         <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
                                         <td>
+                                            <?php echo htmlspecialchars($row['address'] . ', ' . $row['suburbtown'] . ' ' . $row['state'] . ' ' . $row['postcode']); ?>
+                                        </td>
+                                        <td>
                                             <small>
-                                                Email: <?php echo htmlspecialchars($row['email'] ?? 'N/A'); ?><br>
+                                                Email: <a href="mailto:<?php echo htmlspecialchars($row['email'] ?? ''); ?>">
+                                                    <?php echo htmlspecialchars($row['email'] ?? 'N/A'); ?></a><br>
                                                 Phone: <?php echo htmlspecialchars($row['phone'] ?? 'N/A'); ?>
                                             </small>
                                         </td>
@@ -227,9 +234,9 @@ $pageAuthor = "Group 2";
                                                 <select name="status" class="select-status-inline"
                                                         onchange="this.form.submit()"
                                                         aria-label="Change status for EOI #<?php echo (int) $row['EOInumber']; ?>">
-                                                    <option value="New"     <?php if ($row['status'] === 'New')     echo 'selected'; ?>>New</option>
-                                                    <option value="Current" <?php if ($row['status'] === 'Current') echo 'selected'; ?>>Current</option>
-                                                    <option value="Final"   <?php if ($row['status'] === 'Final')   echo 'selected'; ?>>Final</option>
+                                                    <option value="NEW"     <?php if ($row['status'] === 'NEW')     echo 'selected'; ?>>New</option>
+                                                    <option value="CURRENT" <?php if ($row['status'] === 'CURRENT') echo 'selected'; ?>>Current</option>
+                                                    <option value="FINAL"   <?php if ($row['status'] === 'FINAL')   echo 'selected'; ?>>Final</option>
                                                 </select>
                                             </form>
                                         </td>
