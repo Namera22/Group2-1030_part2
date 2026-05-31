@@ -46,6 +46,10 @@ if (session_status() === PHP_SESSION_NONE) {
         echo '<link rel="stylesheet" href="about-style.css">';
     }
 
+    elseif ($currentPage == "manage.php") {
+        echo '<link rel="stylesheet" href="manage-style.css">';
+    }
+
   ?>
 
 </head>

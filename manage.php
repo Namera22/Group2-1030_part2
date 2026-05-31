@@ -1,9 +1,11 @@
+
 <?php
 session_start();
 $pageTitle = "HR Manager | Smart City Infrastructure Consultancy";
 $pageDescription = "HR manager dashboard for Smart City Infrastructure Consultancy.";
 $pageKeywords = "HR manager, dashboard, Smart City Infrastructure Consultancy";
 $pageAuthor = "Group 2";
+$pageStyles = ["global-style.css", "manage-style.css"];
 
 // Guard - redirect to login if not logged in
 if (!isset($_SESSION['logged_in'])) {
@@ -112,8 +114,9 @@ $row_count = $result ? mysqli_num_rows($result) : 0;
 
 
 ?>
+
 <?php include 'header.inc'; ?>
-<link rel="stylesheet" href="manage-style.css">
+
 <?php include 'nav.inc'; ?>
 
     <main id="maincontent" style="max-width:1100px; margin: 8em auto 3em; padding: 0 2em;">
@@ -154,7 +157,7 @@ $row_count = $result ? mysqli_num_rows($result) : 0;
                     <div class="form-group">
                         <label for="sort_by">Sort By</label>
                         <select name="sort_by" id="sort_by">
-                            <option value="eoi"        <?php if ($sort_field === 'EOInumber')        echo 'selected'; ?>>EOI ID</option>
+                            <option value="EOInumber"        <?php if ($sort_field === 'EOInumber')        echo 'selected'; ?>>EOI ID</option>
                             <option value="job_reference" <?php if ($sort_field === 'job_reference') echo 'selected'; ?>>Job Reference</option>
                             <option value="first_name"    <?php if ($sort_field === 'first_name')    echo 'selected'; ?>>First Name</option>
                             <option value="last_name"     <?php if ($sort_field === 'last_name')     echo 'selected'; ?>>Last Name</option>
