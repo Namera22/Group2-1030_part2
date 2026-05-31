@@ -28,7 +28,7 @@ if (session_status() === PHP_SESSION_NONE) {
     $currentPage = basename($_SERVER['PHP_SELF']);
 
     if ($currentPage == "index.php") {
-        echo '<link rel="stylesheet" href="index-style.css?v=20260522-hero-type">';
+        echo '<link rel="stylesheet" href="index-style.css?v=20260530-search">';
     }
 
     elseif ($currentPage == "jobs.php") {
@@ -44,7 +44,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
   ?>
-    <link rel="icon" href="images/favicon.ico" type="image/ico"
+
 </head>
 
 <body>

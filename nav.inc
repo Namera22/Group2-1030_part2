@@ -68,12 +68,14 @@ $isAdmin = $navRole === 'admin';
 
     <!-- SEARCH -->
 
-    <form class="nav-search">
+    <form class="nav-search" method="get" action="index.php">
 
       <input type="text"
              id="search"
+             name="site_search"
              placeholder="Search..."
-             aria-label="Search website">
+             aria-label="Search website"
+             value="<?php echo htmlspecialchars($_GET['site_search'] ?? ''); ?>">
 
       <button type="submit" aria-label="Submit search">
         Search
