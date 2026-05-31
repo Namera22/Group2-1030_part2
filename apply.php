@@ -68,8 +68,8 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
                             echo "<option value='" . htmlspecialchars($job['ref_number']) . "'" . $selected . ">" . htmlspecialchars($job['ref_number']) . " - " . htmlspecialchars($job['title']) . "</option>";
                             }
                             ?>
-                            <?php if(!empty($errors['job_reference'])) echo "<p style='color:red;'>" . $errors['job_reference'] . "</p>"; ?>
                             </select>
+                            <?php if(!empty($errors['job_reference'])) echo "<p style='color:red;'>" . $errors['job_reference'] . "</p>"; ?>
                         </div>
                     </div>
                 </section>
