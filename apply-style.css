@@ -144,6 +144,34 @@ header.hero {
 }
 
 /* =========================
+   ERROR BANNER
+========================= */
+
+.error-banner {
+    max-width: 1100px;
+    margin: 24px auto 48px;
+    padding: 16px 20px;
+    border-left: 6px solid #b00020;
+    border-radius: 12px;
+    background: #ffe8e8;
+    color: #7a0012;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.error-banner strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.error-banner p {
+    margin: 0;
+    color: #7a0012;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* =========================
    PAGE LAYOUT
 ========================= */
 

@@ -29,6 +29,13 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
         </div>
         </header>
 
+        <?php if (!empty($errors)): ?>
+            <div class="error-banner">
+                <strong>Please check your application.</strong>
+                <p>Please ensure all required fields contain valid inputs before submitting the form.</p>
+            </div>
+        <?php endif; ?>
+
         <!-- progress card that follows you down the page containing the contents of the page-->
         <main class="page-wrap" id="maincontent">
             <aside class="progress-card">
@@ -37,7 +44,7 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
                 <li><a href="#job-details">Job Details</a></li>
                 <li><a href="#personal-details">Personal Details</a></li>
                 <li><a href="#contact-details">Contact Details</a></li>
-                <li><a href="#address">Address</a></li>
+                <li><a href="#home_address">Address</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#submit">Submit</a></li>
             </ol>
@@ -154,7 +161,7 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
                     </div>
                 </section>
 
-                <section class="form-section" id="address">
+                <section class="form-section" id="home_address">
                     <div class="section-heading">
                         <span class="section-number">4</span>
                         <div>
@@ -181,6 +188,7 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
                         <div class="form-elements">
                             <label for="state">State/Territory<span class="required">*</span></label>
                             <select name="state" id="state">
+                                
                                 <option value="VIC" <?php if(($form_data['state'] ?? '') === 'VIC') echo 'selected'; ?>>VIC</option>
                                 <option value="NSW" <?php if(($form_data['state'] ?? '') === 'NSW') echo 'selected'; ?>>NSW</option>
                                 <option value="QLD" <?php if(($form_data['state'] ?? '') === 'QLD') echo 'selected'; ?>>QLD</option>
@@ -249,82 +257,84 @@ unset($_SESSION['form_data'], $_SESSION['errors']);
                                 
 
                             </style>
-                            <label for="skills">What Skills Do You Have<span class="required">*</span></label>
-                            <br>
-                            <div class="skills-grid">
-                                <label class="skills-list">
-                                    <input type="checkbox" id="communication" name="communication" value="communication"
-                                    <?php if(isset($form_data['communication'])) echo 'checked'; ?>>
-                                    <span>Communication</span>
-                                </label>
+                            <fieldset class="form-element-1column">
+                                <legend>What Skills Do You Have<span class="required">*</span></legend>
+                                <br>
+                                <div class="skills-grid">
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="communication" name="communication" value="communication"
+                                        <?php if(isset($form_data['communication'])) echo 'checked'; ?>>
+                                        <span>Communication</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="problem_solving" name="problem_solving" value="problem_solving"
-                                    <?php if(isset($form_data['problem_solving'])) echo 'checked'; ?>>
-                                    <span>Problem Solving</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="problem_solving" name="problem_solving" value="problem_solving"
+                                        <?php if(isset($form_data['problem_solving'])) echo 'checked'; ?>>
+                                        <span>Problem Solving</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="leadership" name="leadership" value="leadership"
-                                    <?php if(isset($form_data['leadership'])) echo 'checked'; ?>>
-                                    <span>Leadership</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="leadership" name="leadership" value="leadership"
+                                        <?php if(isset($form_data['leadership'])) echo 'checked'; ?>>
+                                        <span>Leadership</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="technical" name="technical" value="technical"
-                                    <?php if(isset($form_data['technical'])) echo 'checked'; ?>>
-                                    <span>Technical</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="technical" name="technical" value="technical"
+                                        <?php if(isset($form_data['technical'])) echo 'checked'; ?>>
+                                        <span>Technical</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="time_management" name="time_management" value="time_management"
-                                    <?php if(isset($form_data['time_management'])) echo 'checked'; ?>>
-                                    <span>Time Management</span>
-                                </label>
-                           
-                                <label class="skills-list">
-                                    <input type="checkbox" id="teamwork" name="teamwork" value="teamwork"
-                                    <?php if(isset($form_data['teamwork'])) echo 'checked'; ?>>
-                                    <span>Teamwork</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="time_management" name="time_management" value="time_management"
+                                        <?php if(isset($form_data['time_management'])) echo 'checked'; ?>>
+                                        <span>Time Management</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="adaptability" name="adaptability" value="adaptability"
-                                    <?php if(isset($form_data['adaptability'])) echo 'checked'; ?>>
-                                    <span>Adaptability</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="teamwork" name="teamwork" value="teamwork"
+                                        <?php if(isset($form_data['teamwork'])) echo 'checked'; ?>>
+                                        <span>Teamwork</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="data_analysis" name="data_analysis" value="data_analysis"
-                                    <?php if(isset($form_data['data_analysis'])) echo 'checked'; ?>>
-                                    <span>Data Analysis</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="adaptability" name="adaptability" value="adaptability"
+                                        <?php if(isset($form_data['adaptability'])) echo 'checked'; ?>>
+                                        <span>Adaptability</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="customer_service" name="customer_service" value="customer_service"
-                                    <?php if(isset($form_data['customer_service'])) echo 'checked'; ?>>
-                                    <span>Customer Service</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="data_analysis" name="data_analysis" value="data_analysis"
+                                        <?php if(isset($form_data['data_analysis'])) echo 'checked'; ?>>
+                                        <span>Data Analysis</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="project_management" name="project_management" value="project_management"
-                                    <?php if(isset($form_data['project_management'])) echo 'checked'; ?>>
-                                    <span>Project Management</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="customer_service" name="customer_service" value="customer_service"
+                                        <?php if(isset($form_data['customer_service'])) echo 'checked'; ?>>
+                                        <span>Customer Service</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="critical_thinking" name="critical_thinking" value="critical_thinking"
-                                    <?php if(isset($form_data['critical_thinking'])) echo 'checked'; ?>>
-                                    <span>Critical Thinking</span>
-                                </label>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="project_management" name="project_management" value="project_management"
+                                        <?php if(isset($form_data['project_management'])) echo 'checked'; ?>>
+                                        <span>Project Management</span>
+                                    </label>
 
-                                <label class="skills-list">
-                                    <input type="checkbox" id="attention_to_detail" name="attention_to_detail" value="attention_to_detail"
-                                    <?php if(isset($form_data['attention_to_detail'])) echo 'checked'; ?>>
-                                    <span>Attention To Detail</span>
-                                </label>
-                            </div>    
-                            <?php if(!empty($errors['skills'])) echo "<p style='color:red;'>" . $errors['skills'] . "</p>"; ?>
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="critical_thinking" name="critical_thinking" value="critical_thinking"
+                                        <?php if(isset($form_data['critical_thinking'])) echo 'checked'; ?>>
+                                        <span>Critical Thinking</span>
+                                    </label>
+
+                                    <label class="skills-list">
+                                        <input type="checkbox" id="attention_to_detail" name="attention_to_detail" value="attention_to_detail"
+                                        <?php if(isset($form_data['attention_to_detail'])) echo 'checked'; ?>>
+                                        <span>Attention To Detail</span>
+                                    </label>
+                                </div>    
+                                <?php if(!empty($errors['skills'])) echo "<p style='color:red;'>" . $errors['skills'] . "</p>"; ?>
+                            </fieldset>
                         </div>
                     </div>
 
