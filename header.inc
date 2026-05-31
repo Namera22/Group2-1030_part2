@@ -21,6 +21,9 @@ if (session_status() === PHP_SESSION_NONE) {
   <!-- global STYLES -->
   <link rel="stylesheet" href="global-style.css?v=20260522-footer">
 
+  <!-- Favicon icon included -->
+  <link rel="icon" type="image/png" href="./images/favicon.ico">
+
   <!-- PAGE-SPECIFIC STYLES -->
 
   <?php
